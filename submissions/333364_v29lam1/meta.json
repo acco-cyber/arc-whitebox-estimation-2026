@@ -1,0 +1,11 @@
+{
+ "id": 333364,
+ "tag": "v29lam1",
+ "description": "504aldo V29 with lambda-table scale 0.95 -> 1.00 (file from an earlier sandbox, not kept)",
+ "dir": null,
+ "status": "graded",
+ "score": 5.393614963870393e-09,
+ "score_secondary": 2.1583858149654133e-08,
+ "created_at": "2026-10-01T16:00:54.085Z",
+ "grading_message": "Graded successfully"
+}

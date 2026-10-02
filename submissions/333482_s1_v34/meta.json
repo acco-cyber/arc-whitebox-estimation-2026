@@ -1,0 +1,11 @@
+{
+ "id": 333482,
+ "tag": "s1_v34",
+ "description": "V29 cumulant-K3 + dead-ReLU pruning of the K3 legs (V30), C/B~0.232",
+ "dir": "333482_s1_v34",
+ "status": "graded",
+ "score": 4.984831132881156e-09,
+ "score_secondary": 2.132046674319099e-08,
+ "created_at": "2026-10-02T07:58:29.792Z",
+ "grading_message": "Graded successfully"
+}

@@ -1,0 +1,5 @@
+[
+ {"tag": "v34_lr0_dense", "est": "E:\\Claude code\\whest\\est\\v34.py", "ids": "96,0", "env": {"V26_STRASSEN": "0", "V30_LR0": "0"}},
+ {"tag": "v33_dense", "est": "E:\\Claude code\\whest\\est\\v33.py", "ids": "96,0", "env": {"V26_STRASSEN": "0"}},
+ {"tag": "v34_dense", "est": "E:\\Claude code\\whest\\est\\v34.py", "ids": "96,0", "env": {"V26_STRASSEN": "0"}}
+]

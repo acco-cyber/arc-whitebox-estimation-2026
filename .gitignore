@@ -1,0 +1,14 @@
+﻿kit/
+dl/
+data/
+ds_local/
+research/
+runs/pred/
+cs/srv/
+cs/cli/
+__pycache__/
+*.tar.gz
+*.npz
+*.npy
+*.parquet
+est/*_audit.py

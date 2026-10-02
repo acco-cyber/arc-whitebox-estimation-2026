@@ -1,0 +1,10 @@
+[
+ {"tag": "v35_son_dense", "est": "E:\\Claude code\\whest\\est\\v35.py", "ids": "0,1,2,3,4,5",
+  "env": {"V26_STRASSEN": "0", "V30_S_ON": "0,0,0,0,0,0,0,32,32,64,64,96,96,128,128,160"}},
+ {"tag": "v35_son0_dense", "est": "E:\\Claude code\\whest\\est\\v35.py", "ids": "96,0",
+  "env": {"V26_STRASSEN": "0"}},
+ {"tag": "v35_son_emu", "est": "E:\\Claude code\\whest\\est\\v35.py", "ids": "96,0",
+  "env": {"V26_STRASSEN": "0", "V30_EMU": "1", "V30_S_ON": "0,0,0,0,0,0,0,32,32,64,64,96,96,128,128,160"}},
+ {"tag": "v35_son_real", "est": "E:\\Claude code\\whest\\est\\v35.py", "ids": "96",
+  "env": {"V26_STRASSEN": "0", "V30_S_ON": "0,0,0,0,0,0,0,32,32,64,64,96,96,128,128,160"}}
+]

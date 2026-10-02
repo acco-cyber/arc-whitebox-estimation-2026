@@ -1,0 +1,285 @@
+class _VH:
+    """V37: a scratch view together with its sub-views, made once. A slice of a remote array
+    is a client/server round trip (half of all calls of V30 were slices of the pooled
+    Strassen buffers); the pools persist across layers and MLPs, so every sub-view of a
+    pooled buffer is created on first use and reused afterwards."""
+    __slots__ = ("a", "s7", "q4", "h0", "sw", "qs")
+
+    def __init__(self, a):
+        self.a = a
+        self.s7 = None    # the seven [:, i*P:(i+1)*P] slabs
+        self.q4 = None    # quadrants of the last two axes: (00, 01, 10, 11)
+        self.h0 = None    # holder of a[0]
+        self.sw = None    # swapaxes(a, -1, -2)
+        self.qs = None    # swapped views of the quadrants (hub leaf right operands)
+
+    def sev(self):
+        s = self.s7
+        if s is None:
+            a = self.a
+            P = a.shape[1] // 7
+            s = self.s7 = tuple(a[:, i * P:(i + 1) * P] for i in range(7))
+        return s
+
+    def quad(self):
+        qd = self.q4
+        if qd is None:
+            a = self.a
+            h, q = a.shape[-2] // 2, a.shape[-1] // 2
+            qd = self.q4 = (a[..., :h, :q], a[..., :h, q:], a[..., h:, :q], a[..., h:, q:])
+        return qd
+
+    def first(self):
+        e = self.h0
+        if e is None:
+            e = self.h0 = _VH(self.a[0])
+        return e
+
+    def swapped(self):
+        s = self.sw
+        if s is None:
+            s = self.sw = fnp.swapaxes(self.a, -1, -2)
+        return s
+
+    def quad_swapped(self, i):
+        d = self.qs
+        if d is None:
+            d = self.qs = {}
+        s = d.get(i)
+        if s is None:
+            s = d[i] = fnp.swapaxes(self.quad()[i], -1, -2)
+        return s
+
+
+class _Strassen:
+    """Recursive Strassen on batched operands. Layouts (last two axes = the matrix):
+      plain: X (bx, P, m, kd) @ Y (by, P, kd, w) -> out (by, P, m, w), bx in {1, by}
+      hub:   X (k, P, m, kd), Y (k, P, w, kd)    -> out (P, m, w) = sum_k X_k @ Y_k^T
+    Every combo / product is ONE flopscope op over the whole batch, written with out=
+    into pooled buffers shared by role (F53: fresh result buffers dominate residual).
+    The seven products: M1=(X11+X22)(Y11+Y22) M2=(X21+X22)Y11 M3=X11(Y12-Y22)
+    M4=X22(Y21-Y11) M5=(X11+X12)Y22 M6=(X21-X11)(Y11+Y12) M7=(X12-X22)(Y21+Y22);
+    C11=M1+M4-M5+M7 C12=M3+M5 C21=M2+M4 C22=M1-M2+M3+M6.  For the hub kernel the
+    right operand is Y^T, whose blocks are (Y^T)11=Y[..,:h,:q], (Y^T)12=Y[..,h:,:q],
+    (Y^T)21=Y[..,:h,q:], (Y^T)22=Y[..,h:,q:] (no transposes: the kernel contracts j).
+    V37: operands travel as _VH holders (cached sub-views); the op stream of every family
+    is unchanged (same ops, same order, same buffers)."""
+
+    def __init__(self, dtype, bmax):
+        self.dtype = dtype
+        self.bmax = int(bmax)
+        self.flat = {}    # V30: (role, P) -> flat scratch buffer shared by every block shape
+        self.views = {}   # V30: ((role, P), c, h, q) -> (cap, c, h, q) view of its prefix
+        self.hold = {}    # V37: ((role, P), c, h, q, b) -> _VH of the (b, c, h, q) prefix
+        self.smin = STRASSEN_MIN   # V30: smallest leaf block side (per family, see _predict_core)
+
+    def clear(self):
+        self.flat = {}
+        self.views = {}
+        self.hold = {}
+
+    def _bufh(self, key, shape4):
+        """V30: scratch buffer (b, c, h, q) for role key[0] at recursion width key[1].
+        The pruned families run at a different block shape (h, q) on every layer, so the
+        pools can no longer be keyed by shape (they would pile up) nor rebuilt per layer
+        (freeing GBs is residual time). One flat buffer per (role, P) serves every shape
+        through a cached reshaped view of its prefix. Buffers are pure scratch inside one
+        family call. V37: returns the cached holder of the (b, c, h, q) prefix."""
+        b, c, h, q = (int(x) for x in shape4)
+        rk = (key[0], key[1])
+        hk = (rk, c, h, q, b)
+        e = self.hold.get(hk)
+        if e is not None:
+            return e
+        vk = (rk, c, h, q)
+        v = self.views.get(vk)
+        if v is None or v.shape[0] < b:
+            per = c * h * q
+            f = self.flat.get(rk)
+            if f is None or f.shape[0] < per * b:
+                f = fnp.empty((per * b,), dtype=self.dtype)
+                self.flat[rk] = f
+                self.views = {k_: v_ for k_, v_ in self.views.items() if k_[0] != rk}
+                self.hold = {k_: v_ for k_, v_ in self.hold.items() if k_[0] != rk}
+            cap = f.shape[0] // per
+            v = fnp.reshape(f[:cap * per], (cap, c, h, q))
+            self.views[vk] = v
+        e = _VH(v if v.shape[0] == b else v[:b])
+        self.hold[hk] = e
+        return e
+
+    def level(self, m, kd, w, lev):
+        """V28: largest level <= lev at which every block side divides and stays
+        >= the leaf minimum (a family whose sides do not allow `lev` runs shallower
+        instead of falling back to dense)."""
+        while lev > 0 and not self._ok(m, kd, w, lev):
+            lev -= 1
+        return lev
+
+    def _ok(self, m, kd, w, lev):
+        d = 2 ** lev
+        return (lev > 0 and m % d == 0 and kd % d == 0 and w % d == 0
+                and min(m, kd, w) // d >= self.smin)
+
+    def _combos(self, Xh, kind, key, tq=False):
+        """Seven Strassen combos of the quadrants (X11,X12,X21,X22) of X (b, P, m, kd) into
+        a pooled (b, 7P, h, q) buffer (combo i = slab [:, i*P:(i+1)*P]). tq: the quadrants
+        are taken in the transposed block order (hub right operand)."""
+        b, P, m, kd = Xh.a.shape
+        Bh = self._bufh(key, (b, 7 * P, m // 2, kd // 2))
+        o = Bh.sev()
+        if tq:
+            X11, X21, X12, X22 = Xh.quad()
+        else:
+            X11, X12, X21, X22 = Xh.quad()
+        if kind == "L":
+            fnp.add(X11, X22, out=o[0]); fnp.add(X21, X22, out=o[1])
+            fnp.copyto(o[2], X11);       fnp.copyto(o[3], X22)
+            fnp.add(X11, X12, out=o[4]); fnp.subtract(X21, X11, out=o[5])
+            fnp.subtract(X12, X22, out=o[6])
+        else:
+            fnp.add(X11, X22, out=o[0]); fnp.copyto(o[1], X11)
+            fnp.subtract(X12, X22, out=o[2]); fnp.subtract(X21, X11, out=o[3])
+            fnp.copyto(o[4], X22);       fnp.add(X11, X12, out=o[5])
+            fnp.add(X21, X22, out=o[6])
+        return Bh
+
+    @staticmethod
+    def _assemble(Mh, outh):
+        """M (b, 7P, h, w) products -> out (b, P, m, w) quadrants (8 ops)."""
+        M = Mh.sev()
+        C11, C12, C21, C22 = outh.quad()
+        fnp.add(M[0], M[3], out=C11); fnp.subtract(C11, M[4], out=C11)
+        fnp.add(C11, M[6], out=C11)
+        fnp.add(M[2], M[4], out=C12)
+        fnp.add(M[1], M[3], out=C21)
+        fnp.subtract(M[0], M[1], out=C22); fnp.add(C22, M[2], out=C22)
+        fnp.add(C22, M[5], out=C22)
+
+    def mm(self, X, Y, out, lev):
+        """plain: X (bx, P, m, kd), Y (by, P, kd, w) -> out (by, P, m, w). Operands may be
+        arrays or _VH holders (persistent operands: pass a holder to reuse its sub-views)."""
+        self._mm(X if isinstance(X, _VH) else _VH(X), Y if isinstance(Y, _VH) else _VH(Y),
+                 out if isinstance(out, _VH) else _VH(out), lev)
+
+    def _mm(self, Xh, Yh, outh, lev):
+        bx, P, m, kd = Xh.a.shape
+        by, w = Yh.a.shape[0], Yh.a.shape[3]
+        if not self._ok(m, kd, w, lev):
+            fnp.matmul(Xh.a, Yh.a, out=outh.a)
+            return
+        h, q, v = m // 2, kd // 2, w // 2
+        if P >= STRASSEN_FUSE_P and not self._ok(h, q, v, lev - 1):
+            # V28: fused leaf (deep levels only) -- one product at a time into the out quadrants
+            self._leaf_mm(Xh.quad(), Yh.quad(), outh.quad(), bx, by, P, h, q, v)
+            return
+        Xc = self._combos(Xh, "L", ("L", P))
+        Yc = self._combos(Yh, "R", ("R", P))
+        # V28: the products reuse this level's left-combo buffer when the callee recurses
+        # (its combos consume Xc before anything is written into out); a fused-leaf callee
+        # reads X while writing out, so it keeps a separate M. Square blocks only.
+        callee_recurses = self._ok(h // 2, q // 2, v // 2, lev - 2)
+        mkey = ("L", P) if (callee_recurses and q == v) else ("M", P)
+        Mh = self._bufh(mkey, (by, 7 * P, h, v))
+        self._mm(Xc, Yc, Mh, lev - 1)
+        self._assemble(Mh, outh)
+
+    def _leaf_mm(self, XQ, YQ, OQ, bx, by, P, h, q, v):
+        """Fused leaf of mm: M6->C22, M4->C11, M1 (+C11, +C22), M2->C21 (C22-=), M3->C12
+        (C22+=), M5 (C11-=, C12+=), M7 (C11+=): 7 matmul writes + 8 adds, one combo
+        pair alive at a time (copies for the raw-quadrant operands keep every matmul
+        input contiguous)."""
+        X11, X12, X21, X22 = XQ
+        Y11, Y12, Y21, Y22 = YQ
+        C11, C12, C21, C22 = OQ
+        Lb = self._bufh(("L1", P), (bx, P, h, q)).a
+        Rb = self._bufh(("R1", P), (by, P, q, v)).a
+        Mb = self._bufh(("M1", P), (by, P, h, v)).a
+        # C11 = M1+M4-M5+M7, C12 = M3+M5, C21 = M2+M4, C22 = M1-M2+M3+M6
+        fnp.subtract(X21, X11, out=Lb); fnp.add(Y11, Y12, out=Rb)
+        fnp.matmul(Lb, Rb, out=C22)                                   # M6 -> C22
+        fnp.add(X21, X22, out=Lb)
+        fnp.matmul(Lb, Y11, out=C21)                                  # M2 -> C21
+        fnp.subtract(C22, C21, out=C22)                               # C22 -= M2
+        fnp.subtract(Y21, Y11, out=Rb)
+        fnp.matmul(X22, Rb, out=C11)                                  # M4 -> C11
+        fnp.add(C21, C11, out=C21)                                    # C21 += M4
+        fnp.add(X11, X22, out=Lb); fnp.add(Y11, Y22, out=Rb)
+        fnp.matmul(Lb, Rb, out=Mb)                                    # M1
+        fnp.add(C11, Mb, out=C11); fnp.add(C22, Mb, out=C22)
+        fnp.subtract(Y12, Y22, out=Rb)
+        fnp.matmul(X11, Rb, out=C12)                                  # M3 -> C12
+        fnp.add(C22, C12, out=C22)                                    # C22 += M3
+        fnp.add(X11, X12, out=Lb)
+        fnp.matmul(Lb, Y22, out=Mb)                                   # M5
+        fnp.subtract(C11, Mb, out=C11); fnp.add(C12, Mb, out=C12)
+        fnp.subtract(X12, X22, out=Lb); fnp.add(Y21, Y22, out=Rb)
+        fnp.matmul(Lb, Rb, out=Mb)                                    # M7
+        fnp.add(C11, Mb, out=C11)
+
+    def hub(self, X, Y, out, lev):
+        """hub: X (k, P, m, kd), Y (k, P, w, kd) -> out (P, m, w) = sum_k X_k Y_k^T.
+        `out` is the (P, m, w) array or a _VH holder of its (1, P, m, w) view."""
+        if isinstance(out, _VH):
+            outh = out
+        else:
+            outh = _VH(out[None])
+            outh.h0 = _VH(out)
+        self._hub(X if isinstance(X, _VH) else _VH(X), Y if isinstance(Y, _VH) else _VH(Y),
+                  outh, lev)
+
+    def _hub(self, Xh, Yh, outh, lev):
+        k, P, m, kd = Xh.a.shape
+        w = Yh.a.shape[2]
+        if not self._ok(m, kd, w, lev):
+            # dense: batched GEMM over (k, P) then a k-sum (the einsum form
+            # 'kpij,kpcj->pic' takes a slow non-BLAS path: 0.5 s per call at 512^2)
+            T = self._bufh(("K", P), (k, P, m, w)).a
+            fnp.matmul(Xh.a, Yh.swapped(), out=T)
+            fnp.sum(T, axis=0, out=outh.first().a)
+            return
+        h, q, v = m // 2, kd // 2, w // 2
+        if P >= STRASSEN_FUSE_P and not self._ok(h, q, v, lev - 1):
+            self._leaf_hub(Xh, Yh, outh.first().quad(), k, P, h, q, v)
+            return
+        Xc = self._combos(Xh, "L", ("L", P))
+        # (Y^T) blocks expressed on the un-transposed Y (rows c, cols j)
+        Yc = self._combos(Yh, "R", ("R", P), tq=True)
+        Mh = self._bufh(("HM", P), (1, 7 * P, h, v))
+        self._hub(Xc, Yc, Mh, lev - 1)
+        self._assemble(Mh, outh)
+
+    def _leaf_hub(self, Xh, Yh, OQ, k, P, h, q, v):
+        """Fused leaf of hub (same product order as _leaf_mm); each product is a batched
+        GEMM over (k, P) into T then a k-sum into its quadrant / the (P, h, v) scratch."""
+        X11, X12, X21, X22 = Xh.quad()
+        Y11, Y21, Y12, Y22 = Yh.quad()       # transposed block order (see class note)
+        C11, C12, C21, C22 = OQ
+        Lb = self._bufh(("L1", P), (k, P, h, q)).a
+        Rh = self._bufh(("R1", P), (k, P, v, q))
+        Rb = Rh.a
+        RbT = Rh.swapped()
+        Y11T = Yh.quad_swapped(0)
+        Y22T = Yh.quad_swapped(3)
+        T = self._bufh(("K", P), (k, P, h, v)).a
+        Mb = self._bufh(("KS", P), (1, P, h, v)).first().a
+
+        def prod(L_, RT_, dst):
+            fnp.matmul(L_, RT_, out=T)
+            fnp.sum(T, axis=0, out=dst)
+
+        fnp.subtract(X21, X11, out=Lb); fnp.add(Y11, Y12, out=Rb); prod(Lb, RbT, C22)   # M6 -> C22
+        fnp.add(X21, X22, out=Lb); prod(Lb, Y11T, C21)                                # M2 -> C21
+        fnp.subtract(C22, C21, out=C22)                                               # C22 -= M2
+        fnp.subtract(Y21, Y11, out=Rb); prod(X22, RbT, C11)                           # M4 -> C11
+        fnp.add(C21, C11, out=C21)                                                    # C21 += M4
+        fnp.add(X11, X22, out=Lb); fnp.add(Y11, Y22, out=Rb); prod(Lb, RbT, Mb)       # M1
+        fnp.add(C11, Mb, out=C11); fnp.add(C22, Mb, out=C22)
+        fnp.subtract(Y12, Y22, out=Rb); prod(X11, RbT, C12)                           # M3 -> C12
+        fnp.add(C22, C12, out=C22)                                                    # C22 += M3
+        fnp.add(X11, X12, out=Lb); prod(Lb, Y22T, Mb)                                 # M5
+        fnp.subtract(C11, Mb, out=C11); fnp.add(C12, Mb, out=C12)
+        fnp.subtract(X12, X22, out=Lb); fnp.add(Y21, Y22, out=Rb); prod(Lb, RbT, Mb)  # M7
+        fnp.add(C11, Mb, out=C11)
+
+

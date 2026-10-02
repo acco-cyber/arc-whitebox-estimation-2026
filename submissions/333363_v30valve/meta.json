@@ -1,0 +1,11 @@
+{
+ "id": 333363,
+ "tag": "v30valve",
+ "description": "V29 + kappa4 channel attempt; failed: leftover mmap/tempfile helper code = prohibited file (file not kept)",
+ "dir": null,
+ "status": "failed",
+ "score": null,
+ "score_secondary": null,
+ "created_at": "2026-10-01T15:56:44.063Z",
+ "grading_message": "Error : Prohibited file in submission"
+}

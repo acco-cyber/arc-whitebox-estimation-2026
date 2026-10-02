@@ -1,0 +1,10 @@
+[
+ {"tag": "v37_parity", "est": "E:\\Claude code\\whest\\est\\v37.py", "ids": "96", "warm": 1,
+  "env": {"V37_SJOIN": "0", "V37_SMIN_SB": "32"}},
+ {"tag": "v37_def", "est": "E:\\Claude code\\whest\\est\\v37.py", "ids": "96", "warm": 1,
+  "env": {}},
+ {"tag": "v37_band_nj11", "est": "E:\\Claude code\\whest\\est\\v37.py", "ids": "96", "warm": 1,
+  "env": {"V36_NOJOIN": "11",
+          "V30_S_OUT": "1024,1024,1024,1024,1024,1024,1024,992,992,960,960,960,928,928,928,896",
+          "V30_S_ON": "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,128"}}
+]
