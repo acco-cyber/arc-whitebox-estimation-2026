@@ -7,7 +7,39 @@
 + NESTED SECOND TIER FOR THE OLDEST SOURCES (V24, 2026-09-03, F72 tiers)
 + ADAPTIVE PER-MLP LAMBDA (V25, 2026-09-03)
 + POOLED BATCHED STRASSEN-WINOGRAD PRODUCTS (V26-V28, 2026-09-05, F79/F80)
-+ NEWBORN + COVARIANCE RIDING THE TRANSPORT FAMILY, BLOCK-SYMMETRIC C_PRE (V29, 2026-09-06).
++ NEWBORN + COVARIANCE RIDING THE TRANSPORT FAMILY, BLOCK-SYMMETRIC C_PRE (V29, 2026-09-06)
++ DEAD-RELU PRUNING OF THE K3 LEG MACHINERY (V30, 2026-10-02)
++ STRASSEN JOINS, CACHED VIEWS, FINAL-LAYER BAND (V37, 2026-10-02).
+
+V30 (this file; base = the public MIT V29 of github.com/504aldo/whest-p2-cumulant-k3):
+a ReLU whose pre-activation sits far below zero (alpha = mu/sigma << 0) has gain w1 ~ 0 and
+reads nothing out of the third cumulant, so the rows of the transported K3 legs that belong
+to such units carry no information. Every layer is relabeled by a cheap pre-estimate of
+alpha (mean propagation + the diagonal of the covariance, ~3 n^2 FLOPs, then one argsort and
+two gathers of the weight matrix), which turns the dead units into a trailing index block,
+and the dense products then run on prefix slices:
+  - transport family: S_OUT[l] rows out, S_IN[l-1] rows in (the w1-scaled legs are ~0 on
+    the dropped inner rows); the covariance slot rides the same family and the two parts
+    of W C that the block leaves out are restored exactly by small dense products
+    (the covariance itself is never approximated);
+  - (2,1)-slice hub contraction and the shared-basis forming / contraction: S_OUT[l] rows;
+  - range finder of the join, basis transports: the same inner / outer slices.
+Means, variances and every per-unit vector stay full width. The schedules are fixed
+(shape-only, the same for every network) and were chosen on public MLPs so that the final
+MSE is unchanged within the noise of the randomized range finders; cost 0.2526 -> 0.232 x B.
+The Strassen scratch pools are flat buffers shared by all block shapes (one cached reshaped
+view per shape), so the op stream and the residual stay at the V29 level. Suite shape only;
+any other shape runs the V29 op stream unchanged. Kill-switch: V30_PRUNE=0.
+V37 (2026-10-02): (i) the join of a source into the shared basis (range finder, projections,
+rotation of the old factors, basis transport W Q, lift inner Q^T) runs as Strassen families with
+a rectangular leaf minimum (the shared-basis forming / contraction families too), (ii) the
+sub-views of the pooled Strassen scratch buffers are made once and cached (a slice is a call),
+(iii) the final layer, which only needs D3, keeps a K3 row band (the 128 most saturated and the
+128 most dead units of the relabeling carry no read-out there), (iv) the thin legs are
+transported on the live block only. Values match V30 within the range-finder noise;
+cost 0.232 -> ~0.207 x B. This file also ships the V29 lambda-table scale 0.95 (paired
+8-MLP A/B: -0.4% MSE vs 1.00) and a D21 feedback rank R_FB = 8 (-3.3% FLOPs, +1.2-1.5% MSE).
+Below this line the V29 docstring follows unchanged.
 
 V29: the dense young legs are pre-scaled by the wick w1 at the wick stage, so the
 transport family multiplies by the raw W and the newborn's A leg (born as w1 * C_off) and
@@ -325,7 +357,7 @@ NO_SRC_LAST = _os.environ.get("V19_NO_SRC_LAST", "0") == "1"  # V19 probe: D3(la
 # with vs 2.51e-8 without). Off by default until refitted on the V17 trajectory.
 NO_CORR = _os.environ.get("V17_NO_CORR", "1") == "1"
 # V25: table scale 0.95 (8-dump scan 0.9/0.92/0.95/1.0 -> 2.2752/2.2727/2.2704/2.2782e-8)
-LAM = [c * float(_os.environ.get("V17_LAM_SCALE", "1.0")) for c in LAM]
+LAM = [c * float(_os.environ.get("V17_LAM_SCALE", "0.95")) for c in LAM]
 # V25: reference ratio mean(dG)/mean(var) at layer l+1 (8-dump mean, scratch/lam_obs_d0-7.npz)
 # and the log-log exponent of the adaptive rule (pooled fit 1.08; 1.0 shipped).
 REF_R = [6.58815e-03, 8.18414e-03, 8.53136e-03, 8.38859e-03, 8.10153e-03, 7.74287e-03,
@@ -431,12 +463,12 @@ def _sched(name, default):
 
 
 # rows of the K3 legs kept at layer l (prefix of the alpha-sorted relabeling)
-S_OUT = _sched("V30_S_OUT", "1024,1024,1024,1024,1024,1024,1024,992,992,960,960,960,928,928,928,1024")
+S_OUT = _sched("V30_S_OUT", "1024,1024,1024,1024,1024,1024,1024,992,992,960,960,960,928,928,928,896")
 # rows kept as the inner index of the transport out of layer l (w1-scaled legs)
 S_IN = _sched("V30_S_IN", "1024,1024,1024,992,960,928,896,896,864,864,832,832,800,800,768,1024")
 PRUNE_EMU = _os.environ.get("V30_EMU", "0") == "1"   # 1: zero-row emulation (no cost change)
 # leading (saturated, alpha >> 0) units of layer l with no K3 readout rows
-S_ON = _sched("V30_S_ON", "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0")
+S_ON = _sched("V30_S_ON", "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,128")
 # first layer whose units are relabeled (the first one with a pruned row count)
 LR0 = min([i for i in range(len(S_OUT)) if S_OUT[i] < 1024 or S_IN[i] < 1024] + [len(S_OUT)])
 LR0 = int(_os.environ.get("V30_LR0", str(LR0)))
@@ -806,7 +838,7 @@ class Estimator(BaseEstimator):
     AGE_OLD2 = int(_os.environ.get("V24_AGE_OLD2", "7"))  # V24: age gate of the nested tier (0 = off)
     R_OLD2 = int(_os.environ.get("V24_R_OLD2", "224"))    # V24: rank of the nested sub-basis U (8-dump frontier runs/v24_7_*_d0-7.log: 224 best, 128 cliff)
     QPASS2 = int(_os.environ.get("V24_QPASS2", "2"))      # V24: passes of the r1-space range finder
-    R_FB = int(_os.environ.get("V37_R_FB", "16"))    # V18: rank of the D21 feedback thin legs (F69 lean ladder: 8/16/32 -> 2.17/2.14/2.14e-8)
+    R_FB = int(_os.environ.get("V37_R_FB", "8"))    # V18: rank of the D21 feedback thin legs (F69 lean ladder: 8/16/32 -> 2.17/2.14/2.14e-8)
     R_RES = 16   # rank of the S21 residual leg (V17 ladder on dumps 0/1: 16/32/64 -> 2.35/2.39/2.41e-8 at 0.492/0.502/0.518xB)
 
     def __init__(self) -> None:

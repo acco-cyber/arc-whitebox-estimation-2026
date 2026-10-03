@@ -444,6 +444,8 @@ SMIN_PR = int(_os.environ.get("V30_SMIN", "24"))     # leaf block minimum of the
 # V36: first layer with no more joins to the shared basis (sources born late stay dense:
 # a join costs more than the few transports it would save near the output)
 NOJOIN_FROM = int(_os.environ.get("V36_NOJOIN", "99"))
+# V38: |alpha| bound of the hub columns a newborn source keeps (0 = all)
+HUB_A = float(_os.environ.get("V38_HUB_A", "0"))
 # V37: the shared-basis families are rectangular (inner side r = 384 / 224): a Strassen level
 # still pays with a small inner block as long as the two outer sides are large, so their leaf
 # minimum is lower than the square families' (r = 384 -> 12, r = 224 -> 7 at five levels)
@@ -955,7 +957,7 @@ class Estimator(BaseEstimator):
         s_sb = STRASSEN_SB
         self._s_hub = s_lev
         r = min(int(self.R_RES), n)  # smoke shapes can be narrower than the rank
-        rfb = 0 if NO_FB else min(int(self.R_FB) if riders else 16, n)  # V37: R_FB knob at the suite shape only  # V18 feedback rank
+        rfb = 0 if NO_FB else min(int(self.R_FB), n)  # V18 feedback rank
         # V21: shared-basis state for old sources (suite-width only: r must be < n)
         r_old = int(self.R_OLD)
         confine = (not NO_CONFINE) and r_old < n
@@ -995,6 +997,7 @@ class Estimator(BaseEstimator):
         # index of the transport out of layer l (legs are w1-scaled there).
         prune = PRUNE and riders
         perm_prev = None
+        hub_mask = None   # V38: hub-column mask of the source born at the previous layer
         cdiag_prev = None
         inv_perm = None
         nr = n
@@ -1317,6 +1320,9 @@ class Estimator(BaseEstimator):
                 else:
                     C_pre = self._sym_product(WC, w32, n, NN("cpre"), min(CPRE_LEV, s_lev))
                 fnp.copyto(legs["AP0"][k, 1], W)
+                if hub_mask is not None:
+                    fnp.multiply(legs["AP0"][k, 1], hub_mask[None, :], out=legs["AP0"][k, 1])
+                    hub_mask = None
                 A_st = legs["AP0"][:k + 1, 0]
                 P_st = legs["AP0"][:k + 1, 1]
                 # V27: the newborn's thin columns go into slot k of the current Z side
@@ -1783,6 +1789,17 @@ class Estimator(BaseEstimator):
                 fnp.copyto(r2b[k_b], R2T_b)
                 R1T_st = r1b[:k_b + 1]
                 R2T_st = r2b[:k_b + 1]
+            if HUB_A > 0.0 and riders:
+                # V38: hub columns of units whose ReLU is (almost) linear or (almost) dead create
+                # no new third cumulant: drop them from the newborn source (A columns, P columns
+                # at the next layer, the hub rows of the static thin factors)
+                hub_mask = (fnp.abs(alpha) < HUB_A).astype(f32)
+                fnp.multiply(a_b, hub_mask[None, :], out=a_b)
+                fnp.multiply(lb[k_b], hub_mask[:, None], out=lb[k_b])
+                fnp.multiply(Rr_full, hub_mask[:, None], out=Rr_full)
+                if rfb > 0:
+                    fnp.multiply(r1b[k_b], hub_mask[:, None], out=r1b[k_b])
+                    fnp.multiply(r2b[k_b], hub_mask[:, None], out=r2b[k_b])
             w2b_list.append(w2)
             # V21: hub-column Gram weights of this source's legs (X1 = 3A, Y1 ~ A d(w2),
             # M ~ P d(s) + 3 A d(e)): A-type 9 + w2^2 + 9 e^2, P-type 1 + s^2

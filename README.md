@@ -17,7 +17,12 @@ See [submissions/README.md](submissions/README.md) for the full, automatically m
 | V29 (504aldo, public) | factorized K=3 cumulant propagation + memoryless κ4 + shared basis + Strassen | 2.13e-8 | 0.2526 | 5.40e-9 |
 | 333364 | V29, λ-table scale 0.95 → 1.00 | 2.158e-8 | 0.2499 | 5.394e-9 |
 | **333482 (V34)** | + dead-ReLU row pruning of the K3 leg machinery | 2.132e-8 | 0.2338 | **4.985e-9** |
-| V37 (local) | + Strassen on the shared-basis join products, cached sub-views, final-layer readout band | ≈ same | ≈ 0.21 | ≈ 4.5e-9 (est.) |
+| 333679 (V37, s2) | + Strassen on the shared-basis join products, cached sub-views, final-layer readout band | see log | ≈ 0.207 (local) | see log |
+| s3 (V37 + λ 0.95 + R_FB 8) | λ-table scale back to V29's 0.95 (−0.4% MSE), feedback rank 16 → 8 (−3.3% FLOPs, +1% MSE) | see log | ≈ 0.200 (local) | see log |
+
+Measured and rejected on top of V37 (see `runs/`): dropping hub columns of saturated/dead birth units
+(|α| > 3: +39% MSE), K3−K2 "Aitken" extrapolation of the remaining error (R² < 1%), local-feature mean
+correction (R² ≈ 1% at depth).
 
 ## Method (what we added on top of V29)
 
