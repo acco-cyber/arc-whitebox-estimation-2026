@@ -1,0 +1,11 @@
+{
+ "id": 333679,
+ "tag": "s2_v37",
+ "description": "V37: V29 cumulant-K3 + dead-ReLU pruning + Strassen joins + cached views + final-layer band, C/B~0.207",
+ "dir": "333679_s2_v37",
+ "status": "submitted",
+ "score": null,
+ "score_secondary": null,
+ "created_at": "2026-10-03T01:49:15.791Z",
+ "grading_message": "Successfully enqueued 1 Job"
+}
