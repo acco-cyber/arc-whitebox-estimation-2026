@@ -5,7 +5,7 @@ Every AIcrowd submission of this project, newest first. Score = final-layer MSE 
 | id | date (UTC) | tag | score | final-layer MSE | multiplier | status | file | description |
 |---|---|---|---|---|---|---|---|---|
 | 335854 | 2026-10-13 19:00 | s10a | - | - | - | submitted | [335854_s10a/estimator.py](335854_s10a/estimator.py) | s8 stack + BETA108 retune + Strassen MIN=8 (safe record; isolates the depth-lottery terms of s9) |
-| 335842 | 2026-10-13 17:45 | s9 | - | - | - | submitted | [335842_s9/estimator.py](335842_s9/estimator.py) | s8 stack + BETA108 retune + Strassen MIN=8 + level-7 request at MAX_EL=128M (depth unlock lottery; grader-8GB only) |
+| 335842 | 2026-10-13 17:45 | s9 | - | - | - | failed | [335842_s9/estimator.py](335842_s9/estimator.py) | s8 stack + BETA108 retune + Strassen MIN=8 + level-7 request at MAX_EL=128M (depth unlock lottery; grader-8GB only) |
 | 333689 | 2026-10-03 02:37 | s3_v37b | - | - | - | submitted | [333689_s3_v37b/estimator.py](333689_s3_v37b/estimator.py) | V37 + lambda scale 0.95 + D21 feedback rank 8: dead-ReLU pruning, Strassen joins, cached views, final-layer band, C/B~0.200 |
 | 333679 | 2026-10-03 01:49 | s2_v37 | - | - | - | submitted | [333679_s2_v37/estimator.py](333679_s2_v37/estimator.py) | V37: V29 cumulant-K3 + dead-ReLU pruning + Strassen joins + cached views + final-layer band, C/B~0.207 |
 | 333482 | 2026-10-02 07:58 | s1_v34 | 4.9848e-09 | 2.1320e-08 | 0.2338 | graded | [333482_s1_v34/estimator.py](333482_s1_v34/estimator.py) | V29 cumulant-K3 + dead-ReLU pruning of the K3 legs (V30), C/B~0.232 |
