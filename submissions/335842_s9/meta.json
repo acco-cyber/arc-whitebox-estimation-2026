@@ -1,0 +1,11 @@
+{
+ "id": 335842,
+ "tag": "s9",
+ "description": "s8 stack + BETA108 retune + Strassen MIN=8 + level-7 request at MAX_EL=128M (depth unlock lottery; grader-8GB only)",
+ "dir": "335842_s9",
+ "status": "submitted",
+ "score": null,
+ "score_secondary": null,
+ "created_at": "2026-10-13T17:45:17.155Z",
+ "grading_message": "Successfully enqueued 1 Job"
+}
