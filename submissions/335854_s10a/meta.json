@@ -1,0 +1,11 @@
+{
+ "id": 335854,
+ "tag": "s10a",
+ "description": "s8 stack + BETA108 retune + Strassen MIN=8 (safe record; isolates the depth-lottery terms of s9)",
+ "dir": "335854_s10a",
+ "status": "submitted",
+ "score": null,
+ "score_secondary": null,
+ "created_at": "2026-10-13T19:00:04.019Z",
+ "grading_message": "Successfully enqueued 1 Job"
+}
