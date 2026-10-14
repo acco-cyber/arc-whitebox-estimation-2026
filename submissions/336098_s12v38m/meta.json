@@ -1,0 +1,11 @@
+{
+ "id": 336098,
+ "tag": "s12v38m",
+ "description": "s12 = v38 defaults (lambda 0.95, R_FB 8, full S_OUT, HUB_A off) + MAX_EL 32M. RESULT: 4.4984e-9 - WORSE than s10a (4.3829e-9) and than 334627 (4.0449e-9): the 334627-reconstruction hypothesis is FALSIFIED; the grader punishes v38-defaults more than the local harness suggested. 334627's exact config remains on the other machine.",
+ "dir": "336098_s12v38m",
+ "status": "graded",
+ "score": 4.4983893454381246e-09,
+ "score_secondary": 2.131841512209576e-08,
+ "created_at": "2026-10-14T21:09:37.271Z",
+ "grading_message": "Graded successfully"
+}

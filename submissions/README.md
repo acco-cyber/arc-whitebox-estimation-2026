@@ -4,6 +4,7 @@ Every AIcrowd submission of this project, newest first. Score = final-layer MSE 
 
 | id | date (UTC) | tag | score | final-layer MSE | multiplier | status | file | description |
 |---|---|---|---|---|---|---|---|---|
+| 336098 | 2026-10-14 21:09 | s12v38m | 4.4984e-09 | 2.1318e-08 | 0.2110 | graded | [336098_s12v38m/estimator.py](336098_s12v38m/estimator.py) | s12 = v38 defaults (lambda 0.95, R_FB 8, full S_OUT, HUB_A off) + MAX_EL 32M. RESULT: 4.4984e-9 - WORSE than s10a (4.3829e-9) and than 334627 (4.0449e-9): the 334627-reconstruction hypothesis is FALSIFIED; the grader punishes v38-defaults more than the local harness suggested. 334627's exact config remains on the other machine. |
 | 336091 | 2026-10-14 20:22 | s11m64 | 4.3829e-09 | 2.2397e-08 | 0.1957 | graded | [336091_s11m64/estimator.py](336091_s11m64/estimator.py) | s11 = graded s10a + V37_MAX_EL 32M->64M default. RESULT: score identical to s10a to 17 digits (4.3829e-9) -> the 64M combo-buffer cap is fully neutral on the grader (products never exceed 32M on suite shapes). Grader C/B is sticky; cap-scaling lever exhausted. |
 | 335854 | 2026-10-13 19:00 | s10a | 4.3829e-09 | 2.2397e-08 | 0.1957 | graded | [335854_s10a/estimator.py](335854_s10a/estimator.py) | s8 stack + BETA108 retune + Strassen MIN=8 (safe record; isolates the depth-lottery terms of s9) |
 | 335842 | 2026-10-13 17:45 | s9 | - | - | - | failed | [335842_s9/estimator.py](335842_s9/estimator.py) | s8 stack + BETA108 retune + Strassen MIN=8 + level-7 request at MAX_EL=128M (depth unlock lottery; grader-8GB only) |
