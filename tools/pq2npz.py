@@ -10,7 +10,7 @@ import numpy as np
 import pyarrow as pa
 import pyarrow.parquet as pq
 
-OUT = r"E:\Claude code\whest\data\npz"
+OUT = "/home/z/my-project/whest/data/npz"
 
 
 def _flat(arr, shape):

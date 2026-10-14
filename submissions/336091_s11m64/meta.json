@@ -1,0 +1,11 @@
+{
+ "id": 336091,
+ "tag": "s11m64",
+ "description": "s11 = graded s10a + V37_MAX_EL 32M->64M default. RESULT: score identical to s10a to 17 digits (4.3829e-9) -> the 64M combo-buffer cap is fully neutral on the grader (products never exceed 32M on suite shapes). Grader C/B is sticky; cap-scaling lever exhausted.",
+ "dir": "336091_s11m64",
+ "status": "graded",
+ "score": 4.3829035996540864e-09,
+ "score_secondary": 2.2397324492828828e-08,
+ "created_at": "2026-10-14T20:22:41.657Z",
+ "grading_message": "Graded successfully"
+}

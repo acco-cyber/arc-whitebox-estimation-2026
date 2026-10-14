@@ -19,12 +19,16 @@ import time
 import numpy as np
 
 B = float(2 ** 41)
-NPZ = r"E:\Claude code\whest\data\npz\mlp_{:04d}.npz"
+NPZ = "/home/z/my-project/whest/data/npz/mlp_{:04d}.npz"
 
 
 def _peak_mb():
-    """Peak working set of this process in MB (Windows), -1 if unavailable."""
+    """Peak RSS of this process in MB (Linux: ru_maxrss, Windows: peak working set), -1 if unavailable."""
     try:
+        if sys.platform != "win32":
+            import resource
+            # Linux: ru_maxrss is in KiB.
+            return resource.getrusage(resource.RUSAGE_SELF).ru_maxrss / 1024.0
         import ctypes
         from ctypes import wintypes
 

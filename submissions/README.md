@@ -4,6 +4,7 @@ Every AIcrowd submission of this project, newest first. Score = final-layer MSE 
 
 | id | date (UTC) | tag | score | final-layer MSE | multiplier | status | file | description |
 |---|---|---|---|---|---|---|---|---|
+| 336091 | 2026-10-14 20:22 | s11m64 | 4.3829e-09 | 2.2397e-08 | 0.1957 | graded | [336091_s11m64/estimator.py](336091_s11m64/estimator.py) | s11 = graded s10a + V37_MAX_EL 32M->64M default. RESULT: score identical to s10a to 17 digits (4.3829e-9) -> the 64M combo-buffer cap is fully neutral on the grader (products never exceed 32M on suite shapes). Grader C/B is sticky; cap-scaling lever exhausted. |
 | 335854 | 2026-10-13 19:00 | s10a | 4.3829e-09 | 2.2397e-08 | 0.1957 | graded | [335854_s10a/estimator.py](335854_s10a/estimator.py) | s8 stack + BETA108 retune + Strassen MIN=8 (safe record; isolates the depth-lottery terms of s9) |
 | 335842 | 2026-10-13 17:45 | s9 | - | - | - | failed | [335842_s9/estimator.py](335842_s9/estimator.py) | s8 stack + BETA108 retune + Strassen MIN=8 + level-7 request at MAX_EL=128M (depth unlock lottery; grader-8GB only) |
 | 333689 | 2026-10-03 02:37 | s3_v37b | - | - | - | submitted | [333689_s3_v37b/estimator.py](333689_s3_v37b/estimator.py) | V37 + lambda scale 0.95 + D21 feedback rank 8: dead-ReLU pruning, Strassen joins, cached views, final-layer band, C/B~0.200 |
