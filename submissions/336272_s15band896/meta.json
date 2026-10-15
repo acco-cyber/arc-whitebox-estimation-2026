@@ -1,0 +1,11 @@
+{
+ "id": 336272,
+ "tag": "s15band896",
+ "description": "s15 = s10a + final-layer readout band 832->896 (grader-safe partial restore attempt). RESULT: graded 0.0193 with the multiplier FORCED to 1.0 (score/mse = 0.999999999) - a resource cap (0.4s/MLP residual or the FLOP cap) was crossed on suite MLPs; some final layers zeroed. CONCLUSION: the 832-band trim exists to respect the residual cap; the final-hop readout is residual-bound, not FLOP-bound. The band direction is closed on the grader at ANY restore width (896 and 1024 both fatal). Local 8/8 gains are unreachable on the grader without cutting the final hop's residual elsewhere.",
+ "dir": "336272_s15band896",
+ "status": "graded",
+ "score": 0.019271124065899127,
+ "score_secondary": 0.019271141371555594,
+ "created_at": "2026-10-15T15:58:08.551Z",
+ "grading_message": "Graded successfully"
+}

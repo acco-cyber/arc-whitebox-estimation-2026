@@ -1,0 +1,11 @@
+{
+ "id": 336109,
+ "tag": "s13s7",
+ "description": "s13 = s10a + Strassen LEVELS 6->7 (MIN=8, MAX_EL=32M; s9's depth lottery without its 128M confound). RESULT: graded score 0.4473 (multiplier forced 1.0, predictions broken) - the L7 recursion catastrophically fails on the grader. L7 axis CLOSED; LEVELS=6 is the permanent ceiling of this architecture.",
+ "dir": "336109_s13s7",
+ "status": "graded",
+ "score": 0.4473128819303707,
+ "score_secondary": 0.4473128906176707,
+ "created_at": "2026-10-14T21:45:27.728Z",
+ "grading_message": "Graded successfully"
+}
