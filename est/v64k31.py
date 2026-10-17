@@ -372,8 +372,14 @@ TERM_SPECS[(1, 1)].append(('wk431', 'ones2', _I((1, 1)), _I((3, 1)), 1.0 / 3.0))
 TERM_SPECS[(2, 1)].append(('wk431', 'ones2', _I((1, 2)), _I((3, 1)), 1.0 / 6.0))
 TERM_SPECS[(2, 1)].append(('wk431', 'ones2', _I((3, 2)), _I((1, 1)), 1.0 / 6.0))
 TERM_SPECS[(2, 2)].append(('wk431', 'ones2', _I((1, 2)), _I((3, 2)), 1.0 / 3.0))
-# [EF] two-term (3,1) closure of kappa4 (kai_leal_gonzalez, write-up section 4; paired
-# submission #334821, pre-registered -3.1% MSE on 77 held-out nets, graded -3.0%).
+# [EF] two-term (3,1) closure of kappa4 — attributed third-party code, used under MIT.
+# Source: kai_leal_gonzalez, "The (3,1) slice of kappa4 in cumulant propagation",
+# Phase 2 write-up (paired submission #334821, pre-registered -3.1% MSE on 77
+# held-out nets, graded -3.0%); code: github.com/al07-alt/whest-p2-k31-two-term,
+# MIT License, "Copyright (c) 2026 the authors of this repository (ARC WhestBench
+# Phase 2 write-up)". The per-layer table K31TWO_B1 and the wk431-slot rebuild below
+# are their published constants/method, credited per challenge rules SS4/SS6; the
+# surrounding estimator is this team's own chain (s10a/s3 lineage), not theirs.
 # K(j^3,i) = b1_l*v_j*C_ij + kappa3_j*T(j,j,i)/v_j replaces the radial lam*C_off slot.
 # b1 table: LS on dense N=1e8 dumps of public nets 0-2 (mean of three), b2 = 1 (theory).
 K31TWO_B1 = [0.00974, 0.01424, 0.01752, 0.02066, 0.02259, 0.0244, 0.02539, 0.02668,

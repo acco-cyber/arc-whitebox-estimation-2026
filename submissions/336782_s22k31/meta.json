@@ -1,11 +1,11 @@
 {
  "id": 336782,
  "tag": "s22k31",
- "description": "s22 = v60fc (s3+stack) + k31 two-term closure of the kappa4 (3,1) slice (kai_leal_gonzalez, pre-registered -3.1% on 77 nets, graded -3.0% as #334821; ported verbatim: K31TWO_B1 table + wk431 slot rebuild). Local id0 -7.3%, id1 -0.7% MSE at +0.0008% C/B. First measured-positive MSE lever since s10a.",
+ "description": "s22 = v60fc + k31 two-term closure of the kappa4 (3,1) slice (attributed: kai_leal_gonzalez, MIT, github.com/al07-alt/whest-p2-k31-two-term). RESULT: graded 4.28385e-9 (MSE 2.14532e-8 x mult 0.19968) vs s21 4.40267e-9 = -2.70% from the closure alone (pre-registered -3.13% on 77 nets; grader gain a bit softer). NEW BEST available-file entry (old frontier 4.3815e-9). mult 0.19968 matches s21's 0.19967: closure C/B cost ~0 as advertised.",
  "dir": "336782_s22k31",
- "status": "submitted",
- "score": null,
- "score_secondary": null,
+ "status": "graded",
+ "score": 4.283852848082262e-09,
+ "score_secondary": 2.1453235135027172e-08,
  "created_at": "2026-10-17T19:28:40.716Z",
- "grading_message": "Successfully enqueued 1 Job"
+ "grading_message": "Graded successfully"
 }

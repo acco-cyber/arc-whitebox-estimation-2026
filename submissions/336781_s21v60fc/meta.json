@@ -1,11 +1,11 @@
 {
  "id": 336781,
  "tag": "s21v60fc",
- "description": "s21 = s3 (best available file, graded 4.3815e-9) + free-cut stack (R_OLD2 192 + late S_IN trim): pipeline-health check after Oct-16 eval-error outage + banks best-available; predicted ~4.35e-9",
+ "description": "s21 = s3 + free-cut stack (R_OLD2 192 + late S_IN trim). RESULT: graded 4.4027e-9 (MSE 2.20492e-8 x mult 0.19967) - 0.5% WORSE than s3's 4.3815e-9: the stack's local -0.8% did not transfer to the grader under flopscope 0.12.3 billing; local-grader mapping noise ~+-1% confirmed. First successful grade after the Oct-16 evaluation-error outage (grader migrated to flopscope 0.12.3 + whestbench 0.16.2; deadline extended to Oct 21).",
  "dir": "336781_s21v60fc",
- "status": "submitted",
- "score": null,
- "score_secondary": null,
+ "status": "graded",
+ "score": 4.402669531411263e-09,
+ "score_secondary": 2.2049200509854928e-08,
  "created_at": "2026-10-17T19:01:23.021Z",
- "grading_message": "Successfully enqueued 1 Job"
+ "grading_message": "Graded successfully"
 }

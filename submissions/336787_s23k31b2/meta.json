@@ -1,0 +1,11 @@
+{
+ "id": 336787,
+ "tag": "s23k31b2",
+ "description": "s23 = s22 (k31 two-term closure) + measured per-layer b2 table (median 1.17-1.41; k31 report Table 3: -0.3% vs b2=1 theory, 19/20 held-out nets, Holm p=0.02). Predicted ~4.27e-9. Attribution unchanged (MIT notice in file).",
+ "dir": "336787_s23k31b2",
+ "status": "submitted",
+ "score": null,
+ "score_secondary": null,
+ "created_at": "2026-10-17T20:10:37.254Z",
+ "grading_message": "Successfully enqueued 1 Job"
+}
