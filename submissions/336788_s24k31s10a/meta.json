@@ -1,0 +1,11 @@
+{
+ "id": 336788,
+ "tag": "s24k31s10a",
+ "description": "s24 = s10a (graded 4.3829e-9, mult 0.1957) + k31 two-term closure (same attributed patch as s22). Local closure gain on this base: id0 -6.4%, id1 +0.9%. Predicted ~4.26e-9 (4.3829 x 0.973). Second independent closure draw for the nomination pool; full MIT attribution in file.",
+ "dir": "336788_s24k31s10a",
+ "status": "submitted",
+ "score": null,
+ "score_secondary": null,
+ "created_at": "2026-10-17T20:13:58.719Z",
+ "grading_message": "Successfully enqueued 1 Job"
+}
