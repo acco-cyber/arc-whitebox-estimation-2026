@@ -1,0 +1,11 @@
+{
+ "id": 336782,
+ "tag": "s22k31",
+ "description": "s22 = v60fc (s3+stack) + k31 two-term closure of the kappa4 (3,1) slice (kai_leal_gonzalez, pre-registered -3.1% on 77 nets, graded -3.0% as #334821; ported verbatim: K31TWO_B1 table + wk431 slot rebuild). Local id0 -7.3%, id1 -0.7% MSE at +0.0008% C/B. First measured-positive MSE lever since s10a.",
+ "dir": "336782_s22k31",
+ "status": "submitted",
+ "score": null,
+ "score_secondary": null,
+ "created_at": "2026-10-17T19:28:40.716Z",
+ "grading_message": "Successfully enqueued 1 Job"
+}
