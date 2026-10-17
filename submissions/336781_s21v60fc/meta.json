@@ -1,0 +1,11 @@
+{
+ "id": 336781,
+ "tag": "s21v60fc",
+ "description": "s21 = s3 (best available file, graded 4.3815e-9) + free-cut stack (R_OLD2 192 + late S_IN trim): pipeline-health check after Oct-16 eval-error outage + banks best-available; predicted ~4.35e-9",
+ "dir": "336781_s21v60fc",
+ "status": "submitted",
+ "score": null,
+ "score_secondary": null,
+ "created_at": "2026-10-17T19:01:23.021Z",
+ "grading_message": "Successfully enqueued 1 Job"
+}
