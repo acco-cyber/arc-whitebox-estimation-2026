@@ -1,11 +1,11 @@
 {
  "id": 336899,
  "tag": "s26tau26",
- "description": "s26 = s25 base (LordProcciuto e30_a, MIT, credited) + our own one-knob change: X_DEAD_TAU_L default '0-4:2.6' (retirement schedule layers 0-4; LP writeup 3H H1 measured MSE +0.34% / FLOPs -0.55% -> net -0.21%; cliff at 2.2). First own-change step on the adopted lineage per topic 18240.",
+ "description": "s26 = s25 base (LordProcciuto e30_a, MIT, credited) + our one-knob change: X_DEAD_TAU_L default '0-4:2.6'. RESULT: graded 0.14223 = CATASTROPHIC (multiplier FORCED to 1.0, score==MSE -> predictions broken on suite MLPs, like s13/s14/s15/s24). LESSON: LP's 3H H1 tau numbers were measured on e24hot/e28fijo, NOT e30_a at dead_fis=5 \u2014 the per-layer retirement schedule interacts fatally with the shipped X_DEAD_COMP letters. X_DEAD_TAU_L axis CLOSED on e30_a; do not retry. Team best unchanged: s25 = 3.1162826e-9.",
  "dir": "336899_s26tau26",
- "status": "submitted",
- "score": null,
- "score_secondary": null,
+ "status": "graded",
+ "score": 0.14223362350733873,
+ "score_secondary": 0.1422336382812921,
  "created_at": "2026-10-18T06:57:33.121Z",
- "grading_message": "Successfully enqueued 1 Job"
+ "grading_message": "Graded successfully"
 }
