@@ -1,0 +1,18 @@
+{
+ "id": 337069,
+ "tag": "s26alg055",
+ "description": "ALG055-V000 (TristanMiano, MIT; e30_a engine by LordProcciuto; V29 by 504aldo) verbatim + attribution header. Bank shot: identical to graded 336785 = 2.9828e-9. Second nomination-pool entry.",
+ "dir": "337069_s26alg055",
+ "shipped": [
+  "ALG053_LICENSE",
+  "LICENSE",
+  "README.md",
+  "estimator.py",
+  "nn_asset.json"
+ ],
+ "status": "submitted",
+ "score": null,
+ "score_secondary": null,
+ "created_at": "2026-10-19T08:20:51.226Z",
+ "grading_message": "Successfully enqueued 1 Job"
+}
