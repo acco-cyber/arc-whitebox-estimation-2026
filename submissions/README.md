@@ -4,6 +4,7 @@ Every AIcrowd submission of this project, newest first. Score = final-layer MSE 
 
 | id | date (UTC) | tag | score | final-layer MSE | multiplier | status | file | description |
 |---|---|---|---|---|---|---|---|---|
+| 337088 | 2026-10-19 10:10 | s28taubYA | - | - | - | submitted | [337088_s28taubYA/estimator.py](337088_s28taubYA/estimator.py) | ALG058 + X_DEAD_TAU_B=2.2 + X_YA young-atom cap (own changes; Susupro-equivalent column cut + score-based atom cap). |
 | 337079 | 2026-10-19 09:34 | s27taub22 | - | - | - | submitted | [337079_s27taub22/estimator.py](337079_s27taub22/estimator.py) | ALG058-V001 verbatim + own change: birth-column cut enabled by default (X_DEAD_TAU_B=2.2; dead_fis=5 physical compaction). Susupro-equivalent column cut, expected ~-3.3%. |
 | 337069 | 2026-10-19 08:20 | s26alg055 | - | - | - | submitted | [337069_s26alg055/estimator.py](337069_s26alg055/estimator.py) | ALG055-V000 (TristanMiano, MIT; e30_a engine by LordProcciuto; V29 by 504aldo) verbatim + attribution header. Bank shot: identical to graded 336785 = 2.9828e-9. Second nomination-pool entry. |
 | 337066 | 2026-10-19 07:42 | s25alg058 | - | - | - | submitted | [337066_s25alg058/estimator.py](337066_s25alg058/estimator.py) | ALG058-V001 (TristanMiano, MIT; e30_a engine by LordProcciuto; V29 by 504aldo) verbatim + attribution header. Anchor shot, algorithm identical to graded 336809 = 2.9711e-9. |

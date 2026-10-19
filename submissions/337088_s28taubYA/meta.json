@@ -1,0 +1,17 @@
+{
+ "id": 337088,
+ "tag": "s28taubYA",
+ "description": "ALG058 + X_DEAD_TAU_B=2.2 + X_YA young-atom cap (own changes; Susupro-equivalent column cut + score-based atom cap).",
+ "dir": "337088_s28taubYA",
+ "shipped": [
+  "ALG053_LICENSE",
+  "LICENSE",
+  "estimator.py",
+  "nn_asset.json"
+ ],
+ "status": "submitted",
+ "score": null,
+ "score_secondary": null,
+ "created_at": "2026-10-19T10:10:07.061Z",
+ "grading_message": "Successfully enqueued 1 Job"
+}
