@@ -1,0 +1,17 @@
+{
+ "id": 337079,
+ "tag": "s27taub22",
+ "description": "ALG058-V001 verbatim + own change: birth-column cut enabled by default (X_DEAD_TAU_B=2.2; dead_fis=5 physical compaction). Susupro-equivalent column cut, expected ~-3.3%.",
+ "dir": "337079_s27taub22",
+ "shipped": [
+  "ALG053_LICENSE",
+  "LICENSE",
+  "estimator.py",
+  "nn_asset.json"
+ ],
+ "status": "submitted",
+ "score": null,
+ "score_secondary": null,
+ "created_at": "2026-10-19T09:34:51.963Z",
+ "grading_message": "Successfully enqueued 1 Job"
+}
