@@ -1,0 +1,17 @@
+{
+ "id": 337066,
+ "tag": "s25alg058",
+ "description": "ALG058-V001 (TristanMiano, MIT; e30_a engine by LordProcciuto; V29 by 504aldo) verbatim + attribution header. Anchor shot, algorithm identical to graded 336809 = 2.9711e-9.",
+ "dir": "337066_s25alg058",
+ "shipped": [
+  "ALG053_LICENSE",
+  "LICENSE",
+  "estimator.py",
+  "nn_asset.json"
+ ],
+ "status": "submitted",
+ "score": null,
+ "score_secondary": null,
+ "created_at": "2026-10-19T07:42:19.884Z",
+ "grading_message": "Successfully enqueued 1 Job"
+}

@@ -19,8 +19,6 @@ See [submissions/README.md](submissions/README.md) for the full, automatically m
 | **333482 (V34)** | + dead-ReLU row pruning of the K3 leg machinery | 2.132e-8 | 0.2338 | **4.985e-9** |
 | 333679 (V37, s2) | + Strassen on the shared-basis join products, cached sub-views, final-layer readout band | see log | ≈ 0.207 (local) | see log |
 | s3 (V37 + λ 0.95 + R_FB 8) | λ-table scale back to V29's 0.95 (−0.4% MSE), feedback rank 16 → 8 (−3.3% FLOPs, +1% MSE) | see log | ≈ 0.200 (local) | see log |
-| s25 = 336882 (e30_a adopt) | LordProcciuto e30_a adopted verbatim (MIT, credited; their #335981) | 2.0554e-8 | 0.1517 | **3.1163e-9** |
-| s26 = 336899 | s25 + our X_DEAD_TAU_L 0-4:2.6 (retirement schedule; LP H1 net −0.21%) | see log | see log | see log |
 
 Measured and rejected on top of V37 (see `runs/`): dropping hub columns of saturated/dead birth units
 (|α| > 3: +39% MSE), K3−K2 "Aitken" extrapolation of the remaining error (R² < 1%), local-feature mean

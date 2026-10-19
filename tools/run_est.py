@@ -83,7 +83,8 @@ def main():
     ev = load_est(a.est)
     est = ev.Estimator()
     t0 = time.perf_counter()
-    est.setup(SetupContext(width=1024, depth=16, flop_budget=int(B), api_version="1", seed=0))
+    est.setup(SetupContext(width=1024, depth=16, flop_budget=int(B), api_version="1", seed=0,
+                           submission_dir=os.path.dirname(os.path.abspath(a.est))))
     t_setup = time.perf_counter() - t0
     ids = [int(x) for x in a.ids.split(",") if x != ""]
     seq = ([ids[0]] if a.warm else []) + ids
