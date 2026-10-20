@@ -1,0 +1,17 @@
+{
+ "id": 337370,
+ "tag": "s31dose20",
+ "description": "ALG058 + X_DEAD_TAU_B=2.0 only (dose escalation of the graded-clean birth-column axis; 337079 = tau_b 2.2 graded 2.9663e-9 at elasticity ~0.93). Measures grader elasticity one rung deeper. Expected mult ~0.1465-0.147, MSE ~2.02e-8, score ~2.96-3.00e-9; upside if column-cut elasticity stays sub-1.",
+ "dir": "337370_s31dose20",
+ "shipped": [
+  "ALG053_LICENSE",
+  "LICENSE",
+  "estimator.py",
+  "nn_asset.json"
+ ],
+ "status": "submitted",
+ "score": null,
+ "score_secondary": null,
+ "created_at": "2026-10-20T16:29:37.789Z",
+ "grading_message": "Successfully enqueued 1 Job"
+}

@@ -4,6 +4,7 @@ Every AIcrowd submission of this project, newest first. Score = final-layer MSE 
 
 | id | date (UTC) | tag | score | final-layer MSE | multiplier | status | file | description |
 |---|---|---|---|---|---|---|---|---|
+| 337370 | 2026-10-20 16:29 | s31dose20 | - | - | - | submitted | [337370_s31dose20/estimator.py](337370_s31dose20/estimator.py) | ALG058 + X_DEAD_TAU_B=2.0 only (dose escalation of the graded-clean birth-column axis; 337079 = tau_b 2.2 graded 2.9663e-9 at elasticity ~0.93). Measures grader elasticity one rung deeper. Expected mult ~0.1465-0.147, MSE ~2.02e-8, score ~2.96-3.00e-9; upside if column-cut elasticity stays sub-1. |
 | 337369 | 2026-10-20 16:23 | s30geom | - | - | - | failed | [337369_s30geom/estimator.py](337369_s30geom/estimator.py) | ALG058 + s29 stack + SMIN=8/STV=1/VB_HOT=2.6 |
 | 337367 | 2026-10-20 15:50 | s29micro | 2.9942e-09 | 2.0090e-08 | 0.1490 | graded | [337367_s29micro/estimator.py](337367_s29micro/estimator.py) | ALG058 + tau_b 2.2 + tau_L 0-4:2.6 + QPASS2=1 |
 | 337088 | 2026-10-19 10:10 | s28taubYA | - | - | - | submitted | [337088_s28taubYA/estimator.py](337088_s28taubYA/estimator.py) | ALG058 + X_DEAD_TAU_B=2.2 + X_YA young-atom cap (own changes; Susupro-equivalent column cut + score-based atom cap). |
