@@ -1,7 +1,7 @@
 {
  "id": 337369,
  "tag": "s30geom",
- "description": "ALG058 + s29 stack (tau_b 2.2 + tau_L 0-4:2.6 + QPASS2=1) + geometry micro-bundle baked: X_DEAD_SMIN=8 (E6: leaf of tau_b-compacted families) + X_STV=1 (stacked-view Strassen combos 22->14 ops/level, per-level fallback to stock path, |dif|~1e-7) + X_VB_HOT=2.6 (old-level dense-work skip). Expected mult ~0.146-0.147, MSE ~1.99-2.00e-8, score ~2.92-2.93e-9.",
+ "description": "ALG058 + s29 stack + SMIN=8/STV=1/VB_HOT=2.6",
  "dir": "337369_s30geom",
  "shipped": [
   "ALG053_LICENSE",
@@ -9,9 +9,9 @@
   "estimator.py",
   "nn_asset.json"
  ],
- "status": "submitted",
+ "status": "failed",
  "score": null,
  "score_secondary": null,
  "created_at": "2026-10-20T16:23:39.188Z",
- "grading_message": "Successfully enqueued 1 Job"
+ "grading_message": "Error : Smoke test failed"
 }
