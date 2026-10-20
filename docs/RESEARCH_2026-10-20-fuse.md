@@ -84,3 +84,18 @@ score ~2.94-2.96e-9. Kill-switch X_DEAD_TAU_L="" = s27 bit for bit.
   s31dose20 (graded 3.0486e-9), 337386 s32fuse1 (smoke fail), 337388 s33taul26
   (pending) — 5 of 10 used.
 - Best entry: 337079 = 2.9663e-9. Deadline Oct 21 23:59 UTC; nominations Oct 22.
+
+## POST-SCRIPT 3 — CONTROL VERDICT (337390, 19:24 UTC): outage, not content
+The byte-for-byte re-upload of graded 337079 ALSO smoke-failed. Combined with the
+leaderboard (headless render, 20:35 UTC): the most recent graded entry by ANY of the
+top-20+ teams is oliver_chen's #1 at Oct 20 17:55 UTC (1.30e-9, MSE 1.10e-8) — nobody
+has graded since. CONCLUSION: the grader's smoke harness has been rejecting ALL
+submissions (content-independent) since between 17:55 and 19:06 UTC Oct 20. The s32
+(fuse) and s33 (tau_L) post-mortems above are FALSIFIED as content explanations; both
+deltas remain unproven, not disproven, and are the first re-fire candidates when
+grading resumes. This mirrors the Oct-16 evaluation-error outage (organizer topic
+18251), which was resolved by the flopscope migration + deadline extension.
+Retry protocol when the board moves again: re-fire s33 first (probe + best-EV shot in
+one), then s32; keep >= 2 shots in reserve for grade-informed follow-ups. Quota Oct 20:
+6/10 used (337367/337369/337370 earlier + 337386/337388/337390). Board note: the top is
+now 1.30e-9 (oliver_chen, MSE 1.10e-8, Oct 20 17:55); 1.9e-9 cutoff ≈ ranks 9-12.

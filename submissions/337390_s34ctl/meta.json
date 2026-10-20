@@ -1,0 +1,11 @@
+{
+ "id": 337390,
+ "tag": "s34ctl",
+ "description": "RAW CONTROL: byte-for-byte re-upload of graded 337079 (s27 = 2.9663e-9). RESULT: smoke-failed => grader-side smoke outage since ~17:55-19:06 UTC Oct 20; content-independence proven.",
+ "dir": "337390_s34ctl",
+ "status": "failed",
+ "score": null,
+ "score_secondary": null,
+ "created_at": "2026-10-20T19:24:16.943Z",
+ "grading_message": "Error : Smoke test failed"
+}
