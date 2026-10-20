@@ -4,6 +4,7 @@ Every AIcrowd submission of this project, newest first. Score = final-layer MSE 
 
 | id | date (UTC) | tag | score | final-layer MSE | multiplier | status | file | description |
 |---|---|---|---|---|---|---|---|---|
+| 337367 | 2026-10-20 15:50 | s29micro | - | - | - | submitted | [337367_s29micro/estimator.py](337367_s29micro/estimator.py) | ALG058 + measured micro-stack baked: X_DEAD_TAU_B=2.2 (graded as 337079 = 2.9663e-9) + X_DEAD_TAU_L 0-4:2.6 (early-layer tau, -0.55% C/+0.34% MSE per TM H1) + V24_QPASS2=1 (range-finder pass, MSE-flat). Expected mult ~0.1483, MSE ~1.99e-8, score ~2.95e-9. |
 | 337088 | 2026-10-19 10:10 | s28taubYA | - | - | - | submitted | [337088_s28taubYA/estimator.py](337088_s28taubYA/estimator.py) | ALG058 + X_DEAD_TAU_B=2.2 + X_YA young-atom cap (own changes; Susupro-equivalent column cut + score-based atom cap). |
 | 337079 | 2026-10-19 09:34 | s27taub22 | - | - | - | submitted | [337079_s27taub22/estimator.py](337079_s27taub22/estimator.py) | ALG058-V001 verbatim + own change: birth-column cut enabled by default (X_DEAD_TAU_B=2.2; dead_fis=5 physical compaction). Susupro-equivalent column cut, expected ~-3.3%. |
 | 337069 | 2026-10-19 08:20 | s26alg055 | - | - | - | submitted | [337069_s26alg055/estimator.py](337069_s26alg055/estimator.py) | ALG055-V000 (TristanMiano, MIT; e30_a engine by LordProcciuto; V29 by 504aldo) verbatim + attribution header. Bank shot: identical to graded 336785 = 2.9828e-9. Second nomination-pool entry. |

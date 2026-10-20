@@ -1,0 +1,17 @@
+{
+ "id": 337367,
+ "tag": "s29micro",
+ "description": "ALG058 + measured micro-stack baked: X_DEAD_TAU_B=2.2 (graded as 337079 = 2.9663e-9) + X_DEAD_TAU_L 0-4:2.6 (early-layer tau, -0.55% C/+0.34% MSE per TM H1) + V24_QPASS2=1 (range-finder pass, MSE-flat). Expected mult ~0.1483, MSE ~1.99e-8, score ~2.95e-9.",
+ "dir": "337367_s29micro",
+ "shipped": [
+  "ALG053_LICENSE",
+  "LICENSE",
+  "estimator.py",
+  "nn_asset.json"
+ ],
+ "status": "submitted",
+ "score": null,
+ "score_secondary": null,
+ "created_at": "2026-10-20T15:50:26.457Z",
+ "grading_message": "Successfully enqueued 1 Job"
+}
