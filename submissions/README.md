@@ -4,6 +4,8 @@ Every AIcrowd submission of this project, newest first. Score = final-layer MSE 
 
 | id | date (UTC) | tag | score | final-layer MSE | multiplier | status | file | description |
 |---|---|---|---|---|---|---|---|---|
+| 337388 | 2026-10-20 19:31 | s33taul26 | - | - | - | submitted | [337388_s33taul26/estimator.py](337388_s33taul26/estimator.py) | ALG058 + tau_b 2.2 (s27/337079 base, graded 2.9663e-9) + own change: X_DEAD_TAU_L 0-4:2.6 (layers 0-4 birth-retirement -2.85 -> -2.6; LP 3H H1: FLOPs -0.55%, MSE +0.34%). Isolated from the graded s29 bundle where the Oct-16 census puts QPASS2 2->1 at +1.23% MSE on its own. Expected ~2.94-2.96e-9. |
+| 337386 | 2026-10-20 19:06 | s32fuse1 | - | - | - | failed | [337386_s32fuse1/estimator.py](337386_s32fuse1/estimator.py) | ALG058 + tau_b 2.2 (s27/337079 base) + own change: V28_STRASSEN_FUSE_P 343->1 (fuse every Strassen leaf batch). Billing-only: predictions bit-identical to s27 (mini 128x8/256x8 identical SHA-256; FLOPs -3.9/-4.3%, ops +2%, wall -2%). |
 | 337370 | 2026-10-20 16:29 | s31dose20 | 3.0486e-09 | 2.0636e-08 | 0.1477 | graded | [337370_s31dose20/estimator.py](337370_s31dose20/estimator.py) | ALG058 + X_DEAD_TAU_B=2.0 only (dose escalation of the graded-clean birth-column axis) |
 | 337369 | 2026-10-20 16:23 | s30geom | - | - | - | failed | [337369_s30geom/estimator.py](337369_s30geom/estimator.py) | ALG058 + s29 stack + SMIN=8/STV=1/VB_HOT=2.6 |
 | 337367 | 2026-10-20 15:50 | s29micro | 2.9942e-09 | 2.0090e-08 | 0.1490 | graded | [337367_s29micro/estimator.py](337367_s29micro/estimator.py) | ALG058 + tau_b 2.2 + tau_L 0-4:2.6 + QPASS2=1 |

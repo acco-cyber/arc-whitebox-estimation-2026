@@ -57,3 +57,30 @@ to ~-4..-6% at best, every MSE-costing knob has elasticity >= 0.93, and the MSE 
 (learned correctors, miscusi refit) is blocked by the 3 GB sandbox. The two shots
 today defend/improve the best entry; the knob ladder + this fusion axis is now the
 whole measured frontier.
+
+## POST-SCRIPT 1 — s32 smoke verdict (337386, 19:52 UTC)
+s32fuse1 FAILED the grader smoke test ("Error : Smoke test failed") despite being
+bit-exact at mini 128x8 and 256x8. Anatomy: the smoke scenario runs width=1024, depth=16
+(the real graded shape; whestbench cli.py `_smoke_test_contest_spec`, n_mlps=3, 5,000 GT
+samples) — it cannot be reproduced on this 4 GB box (e30_a OOMs at full width). With
+FUSE_P=1 the fused-leaf gate (`P >= FUSE_P and not _ok(child)`) re-routes every
+can't-split level-1 site (side-64 blocks) at full size — machinery the mini (side-32
+leaves, 2 Strassen levels) never exercises, and that NO graded run of this lineage ever
+shipped. LP's 343 threshold stands; the sub-343 fusion axis is closed without an 8 GB
+box. This extends the s30 lesson: the smoke test rejects op-stream deltas that are
+locally clean at every mini id — now including BILLING-ONLY deltas.
+
+## POST-SCRIPT 2 — shot s33 (337388, 19:31 UTC)
+The dead/tau machinery is form-gated to 1024x16 (X_DEAD_FORCE exists for tests; at mini
+128x8 the whole family is inert — verified: tau_b=2.2, tau_b=0 and tau_L schedules all
+produce identical mini hashes/FLOPs). s33 = s27 + X_DEAD_TAU_L "0-4:2.6" alone
+(QPASS2 stays 2): the knob string is grader-proven by s29 (337367, graded 2.9942e-9 in
+bundle with QPASS2=1), the parse is trivial, and the Oct-16 census bounds the bundle
+regression to QPASS2's +1.23% MSE. Expected: mult ~0.1485 (-0.55%), MSE -0.1..+0.3%,
+score ~2.94-2.96e-9. Kill-switch X_DEAD_TAU_L="" = s27 bit for bit.
+
+## Quota ledger (UTC)
+- Oct 20: 337367 s29micro (graded 2.9942e-9), 337369 s30geom (smoke fail), 337370
+  s31dose20 (graded 3.0486e-9), 337386 s32fuse1 (smoke fail), 337388 s33taul26
+  (pending) — 5 of 10 used.
+- Best entry: 337079 = 2.9663e-9. Deadline Oct 21 23:59 UTC; nominations Oct 22.

@@ -1,0 +1,11 @@
+{
+ "id": 337388,
+ "tag": "s33taul26",
+ "description": "ALG058 + tau_b 2.2 (s27/337079 base, graded 2.9663e-9) + own change: X_DEAD_TAU_L 0-4:2.6 (layers 0-4 birth-retirement -2.85 -> -2.6; LP 3H H1: FLOPs -0.55%, MSE +0.34%). Isolated from the graded s29 bundle where the Oct-16 census puts QPASS2 2->1 at +1.23% MSE on its own. Expected ~2.94-2.96e-9.",
+ "dir": "337388_s33taul26",
+ "status": "submitted",
+ "score": null,
+ "score_secondary": null,
+ "created_at": "2026-10-20T19:31:52.000Z",
+ "grading_message": ""
+}

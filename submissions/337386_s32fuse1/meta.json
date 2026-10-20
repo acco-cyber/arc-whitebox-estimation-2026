@@ -1,0 +1,11 @@
+{
+ "id": 337386,
+ "tag": "s32fuse1",
+ "description": "ALG058 + tau_b 2.2 (s27/337079 base) + own change: V28_STRASSEN_FUSE_P 343->1 (fuse every Strassen leaf batch). Billing-only: predictions bit-identical to s27 (mini 128x8/256x8 identical SHA-256; FLOPs -3.9/-4.3%, ops +2%, wall -2%).",
+ "dir": "337386_s32fuse1",
+ "status": "failed",
+ "score": null,
+ "score_secondary": null,
+ "created_at": "2026-10-20T19:06:01.393Z",
+ "grading_message": "Error : Smoke test failed"
+}
