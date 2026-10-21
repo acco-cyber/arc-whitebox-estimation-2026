@@ -1,0 +1,11 @@
+{
+ "id": 337581,
+ "tag": "s46ctl",
+ "description": "CONTROL SHOT (Oct-20 protocol): byte-identical re-upload of graded 337551 (s38hub7 = 2.9575e-9, wall PASS). Purpose: s39 (337561, ytr trio depth 6) and s41 (337569, CPRE depth 6) both failed the grader smoke test within 50 min while this exact content graded clean at 16:23Z. If this control also smoke-fails => grader-side degradation window (retry ladder after recovery); if it grades => the residual margin today cannot absorb even +1-3ms increments and only wall-NEGATIVE moves (column cuts like tau_L) are shippable. No content change; kill-switches n/a.",
+ "dir": "337581_s46ctl",
+ "status": "submitted",
+ "score": null,
+ "score_secondary": null,
+ "created_at": "2026-10-21T17:37:40.529Z",
+ "grading_message": "Successfully enqueued 1 Job"
+}
