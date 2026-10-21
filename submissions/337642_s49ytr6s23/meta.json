@@ -1,11 +1,11 @@
 {
  "id": 337642,
  "tag": "s49ytr6s23",
- "description": "FINAL SHOT / LATE PROBE (fired 22:40Z, Phase 2 ends 23:59Z): young-transport depth 6 second half-dose \u2014 ONLY the two AP-slot families (W x AP0[2ka:2k+extra] x AP1 and W x AP0[0:2] x AP1[0:2]) at depth 6 (smin=16 wraps, n>=1024 non-first), WC/kc family stays at base depth. Six consecutive smoke failures since 16:44Z (spanning every wall direction incl. a byte-identical control) indicate a grader-side break for this team's pipeline; this shot spends the last daily slot as a late-window probe: zero downside (quota is use-it-lose-it), and if the pipeline recovered it completes the trio measurement (with a clean s43 site-1 this reconstructs s39's full trio) with expected -1.0..-1.8% util -> ~2.90-2.92e-9. Kill-switch: V26_STRASSEN_YTR=5.",
- "dir": "337642_s49ytr6s23",
- "status": "ready",
+ "description": "FINAL SHOT / LATE PROBE (22:39Z): young-transport depth 6 second half-dose (AP-slot families only). RESULT: FAILED smoke at ~23:05Z. SEVENTH consecutive smoke failure - the grader-side break for this team's pipeline (proven by the byte-identical control 337581) persisted from ~16:30Z to the Phase 2 close (23:59Z). Daily quota 10/10 used. FINAL STANDING: team best 337551 = 2.9575029e-9 (MSE 1.9854289e-8, util 0.14896, hub-depth-7 config); nomination auto-pair = 337551 + 337545 (2.9577e-9), both deterministic ALG058 config variants graded on the healthy grader.",
+ "dir": null,
+ "status": "failed",
  "score": null,
  "score_secondary": null,
  "created_at": "2026-10-21T22:39:48.754Z",
- "grading_message": ""
+ "grading_message": "Error : Smoke test failed"
 }

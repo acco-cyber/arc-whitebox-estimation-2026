@@ -55,3 +55,16 @@ continue grading. No organizer notice posted; API/UI expose no error detail
 Team best improved 2.9663e-9 → **2.9575029e-9** (337551); rank 42→43 on a tie-block
 shuffle (▼3 on the 18:11 board). The 2.9-block entry (≤ 2.949e-9) was one healthy
 grading window away (s39's −2.0..−2.9% util was modeled, not yet grader-measured).
+
+## Close-out (23:10Z)
+
+| # | id | tag | content | result |
+|---|---|---|---|---|
+| 8 | 337613 | s44stack | CPRE6 + site-1 ytr6 stack | FAILED smoke (20:30Z) |
+| 9 | 337642 | s49ytr6s23 | sites-2+3 half-dose (FINAL SHOT, 22:39Z) | FAILED smoke (23:05Z) |
+
+Seven consecutive smoke failures (16:44Z → 23:05Z) across every wall direction and two
+byte-identical control fires; the grader-side break for this team's pipeline persisted to
+the close. Quota 10/10. **Final: team best 2.9575029e-9 (337551), rank ~42-43, nomination
+auto-pair 337551 + 337545.** The staged ladder (s43/s44/s49 + s42/s48 reserves in
+`scratch/`) remains validated for any post-close re-open or the Phase 3 window.
