@@ -1,0 +1,11 @@
+{
+ "id": 337589,
+ "tag": "s47tauL",
+ "description": "WALL-NEGATIVE probe after the control verdict: byte-identical 337551 content graded 2.9575e-9 at 16:23Z but the same bytes smoke-FAILED at 18:19Z (337581) while lighter engines kept grading => environment/limit change hypothesis; our wall-heavy config no longer clears the residual. This shot cuts INSTEAD of adding: X_DEAD_TAU_L 12-15:2.7 lowers the late-layer (12-15) alive threshold, shrinking the late young-transport/hub dims => fewer billed FLOPs AND a faster predict. Expected -0.5..-1.5% util -> ~2.935-2.950e-9 if it clears; MSE risk bounded by the mild 4-layer dose. Kill-switch: X_DEAD_TAU_L=\"\" restores 337551 billing.",
+ "dir": "337589_s47tauL",
+ "status": "submitted",
+ "score": null,
+ "score_secondary": null,
+ "created_at": "2026-10-21T18:29:23.336Z",
+ "grading_message": "Successfully enqueued 1 Job"
+}
