@@ -1,11 +1,11 @@
 {
  "id": 337589,
  "tag": "s47tauL",
- "description": "WALL-NEGATIVE probe after the control verdict: byte-identical 337551 content graded 2.9575e-9 at 16:23Z but the same bytes smoke-FAILED at 18:19Z (337581) while lighter engines kept grading => environment/limit change hypothesis; our wall-heavy config no longer clears the residual. This shot cuts INSTEAD of adding: X_DEAD_TAU_L 12-15:2.7 lowers the late-layer (12-15) alive threshold, shrinking the late young-transport/hub dims => fewer billed FLOPs AND a faster predict. Expected -0.5..-1.5% util -> ~2.935-2.950e-9 if it clears; MSE risk bounded by the mild 4-layer dose. Kill-switch: X_DEAD_TAU_L=\"\" restores 337551 billing.",
- "dir": "337589_s47tauL",
- "status": "submitted",
+ "description": "WALL-NEGATIVE probe (X_DEAD_TAU_L 12-15:2.7 on 337551 base, late-layer alive-threshold cut => fewer FLOPs + faster predict). RESULT: FAILED smoke at ~18:47Z. With the control (337581) also failed, the whole 337551 lineage fails regardless of wall direction while other engines graded at 17:15-17:25Z => lineage/packaging-specific grader-side breakage, NOT wall. Diagnosis exhausted (API has no error detail; UI traceback organizer-only; no organizer notice on the forum). Endgame: last 2 shots held; s43 probe at ~21:45Z if the pipeline shows life; nomination auto-pair (337551 + 337545) safe.",
+ "dir": null,
+ "status": "failed",
  "score": null,
  "score_secondary": null,
  "created_at": "2026-10-21T18:29:23.336Z",
- "grading_message": "Successfully enqueued 1 Job"
+ "grading_message": "Error : Smoke test failed"
 }
