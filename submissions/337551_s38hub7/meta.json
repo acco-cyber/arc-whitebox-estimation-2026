@@ -1,0 +1,17 @@
+{
+ "id": 337551,
+ "tag": "s38hub7",
+ "description": "ALG058-V001 + tau_b 2.2 (337079) + main-young-hub Strassen depth 6 (graded 337545 = 2.9577e-9, MSE -0.04% rounding-level, residual PASS) with depth 7 at that same single site: leaf blocks 8, smin=8 wrapped at that call site only (global STRASSEN_MIN stays 32, old-level site stays depth 5, first-predict cap preserved). level() clamps gracefully to 6 where shapes/floor disallow. Measured ladder so far: depth 6 gave util -0.25% (337545 vs 337079) and MSE -0.04% (f32 reassociation noise, 1.4x/level per LP's note); depth 7 adds ~-0.45% FLOPs and ~+2-3ms wall on the same slice. Expected score ~2.937e-9 if the residual holds. Kill-switches: V26_STRASSEN_HUB=6 (s36a billing) / =5 (337079 billing).",
+ "dir": "337551_s38hub7",
+ "shipped": [
+  "ALG053_LICENSE",
+  "LICENSE",
+  "estimator.py",
+  "nn_asset.json"
+ ],
+ "status": "submitted",
+ "score": null,
+ "score_secondary": null,
+ "created_at": "2026-10-21T15:50:52.558Z",
+ "grading_message": "Successfully enqueued 1 Job"
+}
