@@ -1,0 +1,11 @@
+{
+ "id": 337561,
+ "tag": "s39ytr6",
+ "description": "s36ahub6 (graded 337545 = 2.9577e-9) + young-transport Strassen depth 6: the three full-width (n,n,n) W x AP families (~22.9% of billed FLOPs) go depth 5->6 with surgical smin=16 wraps, guarded to n>=1024 non-first calls so mini/first-predict stay byte-identical to the graded base. Expected -2.9% util -> ~2.87e-9; wall +7-10ms on the 0.4s residual budget s36a passed. Kill-switch: V26_STRASSEN_YTR=5.",
+ "dir": "337561_s39ytr6",
+ "status": "submitted",
+ "score": null,
+ "score_secondary": null,
+ "created_at": "2026-10-21T16:32:36.171Z",
+ "grading_message": "Successfully enqueued 1 Job"
+}
