@@ -1,11 +1,11 @@
 {
  "id": 337613,
  "tag": "s44stack",
- "description": "EARLY PROBE (fired 20:05Z): CPRE6 + site-1 ytr6 stack on the 337551 base (2.9575e-9) \u2014 the two wall-safe micro-axes (C_pre sym family depth 6, smin=8 wrap; WC/kc family depth 6, smin=16 wrap; both guarded full-width non-first). Combined wall +3-6ms. If the grader pipeline (broken for our submissions since ~16:30Z per the 337581 control and five consecutive smoke failures spanning every wall direction) has recovered, expected -1.0..-1.6% util -> ~2.905-2.925e-9. Kill-switches: V29_STRASSEN_CPRE=5 / V26_STRASSEN_YTR=5.",
- "dir": "337613_s44stack",
- "status": "submitted",
+ "description": "EARLY PROBE: CPRE6 + site-1 ytr6 stack on 337551 (wall +3-6ms). RESULT: FAILED smoke at ~20:30Z (33 min). Sixth consecutive failure. FINAL SHOT: s49ytr6s23 (sites-2+3 half-dose) fires ~22:40Z unconditionally (zero downside; quota is use-it-lose-it). Rules re-verified: Phase 2 cap = 10/day (9 used); mid-Phase-2 grader bug-fix changes explicitly permitted by \u00a75.3 - consistent with a breaking deploy in the 16:23-16:44Z window.",
+ "dir": null,
+ "status": "failed",
  "score": null,
  "score_secondary": null,
  "created_at": "2026-10-21T19:56:54.571Z",
- "grading_message": "Successfully enqueued 1 Job"
+ "grading_message": "Error : Smoke test failed"
 }
