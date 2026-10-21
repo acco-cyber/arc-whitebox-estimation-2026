@@ -1,0 +1,17 @@
+{
+ "id": 337532,
+ "tag": "s32refire",
+ "description": "Re-fire of 337386 (grader outage 2026-10-20 17:55-19:06+ UTC invalidated its smoke run; byte-identical control 337390 failed identically, proving outage cause). Content = graded 337079 (2.9663e-9) + V28_STRASSEN_FUSE_P 343->1: billing-only leaf-batch fusion, predictions bit-identical (SHA-256 verified at 128x8/256x8), billed FLOPs -3..-4%. Kill-switch env documented in header.",
+ "dir": "337532_s32refire",
+ "shipped": [
+  "ALG053_LICENSE",
+  "LICENSE",
+  "estimator.py",
+  "nn_asset.json"
+ ],
+ "status": "submitted",
+ "score": null,
+ "score_secondary": null,
+ "created_at": "2026-10-21T14:19:55.175Z",
+ "grading_message": "Successfully enqueued 1 Job"
+}
