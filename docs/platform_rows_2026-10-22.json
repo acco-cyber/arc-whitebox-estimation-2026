@@ -1,0 +1,434 @@
+[
+ {
+  "id": "337642",
+  "viewerIsOwner": true,
+  "viewerCanSelect": false,
+  "status": "FAILED",
+  "score": null,
+  "createdAt": "2026-10-21T22:39:48Z",
+  "round": {
+   "id": "1429",
+   "name": "Phase 2"
+  }
+ },
+ {
+  "id": "337613",
+  "viewerIsOwner": true,
+  "viewerCanSelect": false,
+  "status": "FAILED",
+  "score": null,
+  "createdAt": "2026-10-21T19:56:54Z",
+  "round": {
+   "id": "1429",
+   "name": "Phase 2"
+  }
+ },
+ {
+  "id": "337605",
+  "viewerIsOwner": true,
+  "viewerCanSelect": false,
+  "status": "FAILED",
+  "score": null,
+  "createdAt": "2026-10-21T19:11:58Z",
+  "round": {
+   "id": "1429",
+   "name": "Phase 2"
+  }
+ },
+ {
+  "id": "337589",
+  "viewerIsOwner": true,
+  "viewerCanSelect": false,
+  "status": "FAILED",
+  "score": null,
+  "createdAt": "2026-10-21T18:29:23Z",
+  "round": {
+   "id": "1429",
+   "name": "Phase 2"
+  }
+ },
+ {
+  "id": "337581",
+  "viewerIsOwner": true,
+  "viewerCanSelect": false,
+  "status": "FAILED",
+  "score": null,
+  "createdAt": "2026-10-21T17:37:40Z",
+  "round": {
+   "id": "1429",
+   "name": "Phase 2"
+  }
+ },
+ {
+  "id": "337569",
+  "viewerIsOwner": true,
+  "viewerCanSelect": false,
+  "status": "FAILED",
+  "score": null,
+  "createdAt": "2026-10-21T16:50:49Z",
+  "round": {
+   "id": "1429",
+   "name": "Phase 2"
+  }
+ },
+ {
+  "id": "337561",
+  "viewerIsOwner": true,
+  "viewerCanSelect": false,
+  "status": "FAILED",
+  "score": null,
+  "createdAt": "2026-10-21T16:32:36Z",
+  "round": {
+   "id": "1429",
+   "name": "Phase 2"
+  }
+ },
+ {
+  "id": "337551",
+  "viewerIsOwner": true,
+  "viewerCanSelect": true,
+  "status": "GRADED",
+  "score": 2.9575029286339395e-09,
+  "createdAt": "2026-10-21T15:50:52Z",
+  "round": {
+   "id": "1429",
+   "name": "Phase 2"
+  }
+ },
+ {
+  "id": "337545",
+  "viewerIsOwner": true,
+  "viewerCanSelect": true,
+  "status": "GRADED",
+  "score": 2.9577463012397747e-09,
+  "createdAt": "2026-10-21T15:16:13Z",
+  "round": {
+   "id": "1429",
+   "name": "Phase 2"
+  }
+ },
+ {
+  "id": "337532",
+  "viewerIsOwner": true,
+  "viewerCanSelect": true,
+  "status": "GRADED",
+  "score": 0.09347510006762659,
+  "createdAt": "2026-10-21T14:19:55Z",
+  "round": {
+   "id": "1429",
+   "name": "Phase 2"
+  }
+ },
+ {
+  "id": "337390",
+  "viewerIsOwner": true,
+  "viewerCanSelect": false,
+  "status": "FAILED",
+  "score": null,
+  "createdAt": "2026-10-20T19:24:16Z",
+  "round": {
+   "id": "1429",
+   "name": "Phase 2"
+  }
+ },
+ {
+  "id": "337388",
+  "viewerIsOwner": true,
+  "viewerCanSelect": false,
+  "status": "FAILED",
+  "score": null,
+  "createdAt": "2026-10-20T19:17:07Z",
+  "round": {
+   "id": "1429",
+   "name": "Phase 2"
+  }
+ },
+ {
+  "id": "337386",
+  "viewerIsOwner": true,
+  "viewerCanSelect": false,
+  "status": "FAILED",
+  "score": null,
+  "createdAt": "2026-10-20T19:06:01Z",
+  "round": {
+   "id": "1429",
+   "name": "Phase 2"
+  }
+ },
+ {
+  "id": "337370",
+  "viewerIsOwner": true,
+  "viewerCanSelect": true,
+  "status": "GRADED",
+  "score": 3.0485964739386347e-09,
+  "createdAt": "2026-10-20T16:29:37Z",
+  "round": {
+   "id": "1429",
+   "name": "Phase 2"
+  }
+ },
+ {
+  "id": "337369",
+  "viewerIsOwner": true,
+  "viewerCanSelect": false,
+  "status": "FAILED",
+  "score": null,
+  "createdAt": "2026-10-20T16:23:39Z",
+  "round": {
+   "id": "1429",
+   "name": "Phase 2"
+  }
+ },
+ {
+  "id": "337367",
+  "viewerIsOwner": true,
+  "viewerCanSelect": true,
+  "status": "GRADED",
+  "score": 2.9941694496618953e-09,
+  "createdAt": "2026-10-20T15:50:26Z",
+  "round": {
+   "id": "1429",
+   "name": "Phase 2"
+  }
+ },
+ {
+  "id": "337088",
+  "viewerIsOwner": true,
+  "viewerCanSelect": true,
+  "status": "GRADED",
+  "score": 2.9386599446923846e-07,
+  "createdAt": "2026-10-19T10:10:07Z",
+  "round": {
+   "id": "1429",
+   "name": "Phase 2"
+  }
+ },
+ {
+  "id": "337079",
+  "viewerIsOwner": true,
+  "viewerCanSelect": true,
+  "status": "GRADED",
+  "score": 2.9663010571877755e-09,
+  "createdAt": "2026-10-19T09:34:51Z",
+  "round": {
+   "id": "1429",
+   "name": "Phase 2"
+  }
+ },
+ {
+  "id": "337069",
+  "viewerIsOwner": true,
+  "viewerCanSelect": true,
+  "status": "GRADED",
+  "score": 2.983002538794149e-09,
+  "createdAt": "2026-10-19T08:20:51Z",
+  "round": {
+   "id": "1429",
+   "name": "Phase 2"
+  }
+ },
+ {
+  "id": "337066",
+  "viewerIsOwner": true,
+  "viewerCanSelect": true,
+  "status": "GRADED",
+  "score": 2.9711234301538272e-09,
+  "createdAt": "2026-10-19T07:42:19Z",
+  "round": {
+   "id": "1429",
+   "name": "Phase 2"
+  }
+ },
+ {
+  "id": "336899",
+  "viewerIsOwner": true,
+  "viewerCanSelect": true,
+  "status": "GRADED",
+  "score": 0.14223362350733873,
+  "createdAt": "2026-10-18T06:57:33Z",
+  "round": {
+   "id": "1429",
+   "name": "Phase 2"
+  }
+ },
+ {
+  "id": "336882",
+  "viewerIsOwner": true,
+  "viewerCanSelect": true,
+  "status": "GRADED",
+  "score": 3.1162826284741647e-09,
+  "createdAt": "2026-10-18T05:25:00Z",
+  "round": {
+   "id": "1429",
+   "name": "Phase 2"
+  }
+ },
+ {
+  "id": "336788",
+  "viewerIsOwner": true,
+  "viewerCanSelect": true,
+  "status": "GRADED",
+  "score": 0.14660021074189303,
+  "createdAt": "2026-10-17T20:13:58Z",
+  "round": {
+   "id": "1429",
+   "name": "Phase 2"
+  }
+ },
+ {
+  "id": "336787",
+  "viewerIsOwner": true,
+  "viewerCanSelect": true,
+  "status": "GRADED",
+  "score": 4.286088894024888e-09,
+  "createdAt": "2026-10-17T20:10:37Z",
+  "round": {
+   "id": "1429",
+   "name": "Phase 2"
+  }
+ },
+ {
+  "id": "336782",
+  "viewerIsOwner": true,
+  "viewerCanSelect": true,
+  "status": "GRADED",
+  "score": 4.283852848082262e-09,
+  "createdAt": "2026-10-17T19:28:40Z",
+  "round": {
+   "id": "1429",
+   "name": "Phase 2"
+  }
+ },
+ {
+  "id": "336781",
+  "viewerIsOwner": true,
+  "viewerCanSelect": true,
+  "status": "GRADED",
+  "score": 4.402669531411263e-09,
+  "createdAt": "2026-10-17T19:01:23Z",
+  "round": {
+   "id": "1429",
+   "name": "Phase 2"
+  }
+ },
+ {
+  "id": "336463",
+  "viewerIsOwner": true,
+  "viewerCanSelect": false,
+  "status": "FAILED",
+  "score": null,
+  "createdAt": "2026-10-16T09:50:23Z",
+  "round": {
+   "id": "1429",
+   "name": "Phase 2"
+  }
+ },
+ {
+  "id": "336442",
+  "viewerIsOwner": true,
+  "viewerCanSelect": false,
+  "status": "FAILED",
+  "score": null,
+  "createdAt": "2026-10-16T07:49:19Z",
+  "round": {
+   "id": "1429",
+   "name": "Phase 2"
+  }
+ },
+ {
+  "id": "336427",
+  "viewerIsOwner": true,
+  "viewerCanSelect": false,
+  "status": "FAILED",
+  "score": null,
+  "createdAt": "2026-10-16T06:32:42Z",
+  "round": {
+   "id": "1429",
+   "name": "Phase 2"
+  }
+ },
+ {
+  "id": "336421",
+  "viewerIsOwner": true,
+  "viewerCanSelect": false,
+  "status": "FAILED",
+  "score": null,
+  "createdAt": "2026-10-16T05:44:25Z",
+  "round": {
+   "id": "1429",
+   "name": "Phase 2"
+  }
+ },
+ {
+  "id": "336420",
+  "viewerIsOwner": true,
+  "viewerCanSelect": false,
+  "status": "FAILED",
+  "score": null,
+  "createdAt": "2026-10-16T05:40:31Z",
+  "round": {
+   "id": "1429",
+   "name": "Phase 2"
+  }
+ },
+ {
+  "id": "336272",
+  "viewerIsOwner": true,
+  "viewerCanSelect": true,
+  "status": "GRADED",
+  "score": 0.019271124065899127,
+  "createdAt": "2026-10-15T15:58:08Z",
+  "round": {
+   "id": "1429",
+   "name": "Phase 2"
+  }
+ },
+ {
+  "id": "336264",
+  "viewerIsOwner": true,
+  "viewerCanSelect": true,
+  "status": "GRADED",
+  "score": 0.06949201032936529,
+  "createdAt": "2026-10-15T15:05:56Z",
+  "round": {
+   "id": "1429",
+   "name": "Phase 2"
+  }
+ },
+ {
+  "id": "336109",
+  "viewerIsOwner": true,
+  "viewerCanSelect": true,
+  "status": "GRADED",
+  "score": 0.4473128819303707,
+  "createdAt": "2026-10-14T21:45:27Z",
+  "round": {
+   "id": "1429",
+   "name": "Phase 2"
+  }
+ },
+ {
+  "id": "336098",
+  "viewerIsOwner": true,
+  "viewerCanSelect": true,
+  "status": "GRADED",
+  "score": 4.4983893454381246e-09,
+  "createdAt": "2026-10-14T21:09:37Z",
+  "round": {
+   "id": "1429",
+   "name": "Phase 2"
+  }
+ },
+ {
+  "id": "336091",
+  "viewerIsOwner": true,
+  "viewerCanSelect": true,
+  "status": "GRADED",
+  "score": 4.3829035996540864e-09,
+  "createdAt": "2026-10-14T20:22:41Z",
+  "round": {
+   "id": "1429",
+   "name": "Phase 2"
+  }
+ }
+]
