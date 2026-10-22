@@ -25,7 +25,11 @@ deadline 2026-10-22T23:59Z). Re-verified with an independent query.
   near-identical builds.
 - 337551 = cheapest engine build (mult 0.14896, 0.27% cheaper than s27's 0.14936)
   with suite MSE identical to the s27 family (1.9854e-8). Its score gain is purely
-  the billing cut.
+  the billing cut. Content (recovered from Oct-21 session records on GitHub,
+  submissions/337551_s38hub7): ALG058-V001 + tau_b 2.2 (graded 337079 base) +
+  **Strassen depth 7 at the single main young-hub site** (leaf 8, smin=8 wrapped at
+  that call site only; global STRASSEN_MIN stays 32; old-level site stays depth 5;
+  first-predict cap preserved; level() clamps to 6 where shapes disallow).
 - 337066 = unmodified ALG058-V001 (TristanMiano, MIT; e30_a engine by LordProcciuto,
   V29 by 504aldo). It has the **lowest MSE of all valid entries** (1.9447e-8, 2.0%
   below the 337551 family) and is the only artifact **proven byte-stable across two
@@ -33,10 +37,12 @@ deadline 2026-10-22T23:59Z). Re-verified with an independent query.
 - Hedge logic: if the cost-cut knob in 337551 interacts badly with fresh-seed
   distributions, 337066 is untouched by that failure mode; conversely if fresh-seed
   MSE preserves family ordering (expected), 337551 still carries the top score.
-- The near-twin 337545 (2.9577e-9, 0.008% behind 337551) was **rejected** in favor of
-  337066: nominating both twins doubles exposure to one undocumented knob (the
-  Oct-21 session that produced them did not push records; their content is only
-  platform-side), while 337066's fresh-seed behavior is the most evidenced in the pool.
+- The near-twin 337545 (2.9577e-9, 0.008% behind 337551; = same base with hub
+  Strassen depth 6 instead of 7) was **rejected** in favor of 337066: nominating both
+  twins doubles exposure to one knob family (hub-depth + tau_b) — including the
+  documented grader runtime-margin risk (deep builds run 10% slower on some grader
+  days → zero-prediction fallbacks; receipts in forum topic 18252) — while 337066's
+  fresh-seed behavior is the most evidenced in the pool.
 
 ## "All submissions getting error" — diagnosis
 
